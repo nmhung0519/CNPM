@@ -10,12 +10,12 @@
             background: chocolate;
             position: relative;
         }
-        #start {
+        #start_button {
             width: 150px;
             height: 150px;
-            background: aqua;
+            background: #82B366;
             border-radius: 150px;
-            position: relative;
+            position: absolute;
         }
         #displayScore {
             width: 500px;
@@ -24,33 +24,194 @@
             border-radius: 40px;
             position: relative;
         }
-        #ball {
+        #ball_0 {
             width: 20px;
             height: 20px;
             background: lawngreen;
             border-radius: 20px;
-            position: relative;
+            position: absolute;
+        }
+        #ball_1 {
+            width: 20px;
+            height: 20px;
+            background: lawngreen;
+            border-radius: 20px;
+            position: absolute;
+        }
+        #ball_2 {
+            width: 20px;
+            height: 20px;
+            background: lawngreen;
+            border-radius: 20px;
+            position: absolute;
+        }
+        #ball_3 {
+            width: 20px;
+            height: 20px;
+            background: lawngreen;
+            border-radius: 20px;
+            position: absolute;
+        }
+        #ball_3 {
+            width: 20px;
+            height: 20px;
+            background: lawngreen;
+            border-radius: 20px;
+            position: absolute;
+        }
+        #ball_4 {
+            width: 20px;
+            height: 20px;
+            background: lawngreen;
+            border-radius: 20px;
+            position: absolute;
+        }
+        #ball_5 {
+            width: 20px;
+            height: 20px;
+            background: lawngreen;
+            border-radius: 20px;
+            position: absolute;
+        }
+        #restart_button {
+            width: 200px;
+            height: 60px;
+            background: darkgrey;
+            border-radius: 60px;
+            position: absolute;
+        }
+        #game_display {
+            width: 600px;
+            height: 150px;
+            background-color: antiquewhite;
+            border-radius: 10px;
+            position: absolute;
+        }
+        #game_table {
+            position: absolute;
         }
         body {
             background-color: cornflowerblue;
         }
+        #box_1 {
+            width: 20px;
+            height: 24px;
+            background-color: red;
+            border-width: thick;
+            boder-color: green;
+            border-radius: 5px;
+            position: absolute;
+        }
     </style>
 </head>
 <body>
-<div id="container" style="left: 550px; top: 100px;">
-    <div id="displayScore" style="left: 150px; top: 20px"></div>
-    <div id="ball" id="ball" style="left: 175px; top: -10px"></div>
-    <div id="start" style="left: 325px; top: 300px" onclick="start()">
+    <div id="container">
+        <div id="back_button" style="left: 20px; top: 30px; font-size: 20px; position: absolute;"><a href="Main.html">&#60; Back</a> </div>
+        <div id="displayScore" style="left: 150px; top: 20px">
+            <div id="ball_0" style="left: 25px; top: 10px"></div>
+            <div id="ball_1" style="left: 55px; top: 10px"></div>
+            <div id="ball_2" style="left: 85px; top: 10px"></div>
+            <div id="ball_3" style="left: 115px; top: 10px"></div>
+            <div id="ball_4" style="left: 145px; top: 10px"></div>
+            <div id="ball_5" style="left: 175px; top: 10px"></div>
+        </div>
+        <div id="game_display" style="left: 100px; top: 180px; display: none;">
+            <div id="game_table" style="left: 60px; top: 20px;">
+                <img src="../Picture/Table1.jpg" width="480px" height="91" style="border-radius: 10px"/>
+            </div>
+            <div id="box_1" style="border-width: 3px"></div>
+        </div>
+    <div id="start_button" style="left: 325px; top: 300px;" onclick="start()" onmouseover="over()" onmouseout="out()">
+        <div id="start_button_1" style="left: 15px; top: 15px; width: 120px; height: 120px; border-radius: 15px; position:relative">
+            <img id = "start_img" src="../Picture/Start0.png" width="120px" height="120px" style="border-radius: 120px">
+        </div>
         <script>
-            function start() {
-                alert("Click");
+            var start_button = document.getElementById("start_button");
+            var start_button_1 = document.getElementById("start_button_1");
+            var start_img = document.getElementById("start_img");
+            function over() {
+                start_button.style.left = "320px";
+                start_button.style.top = "295px"
+                start_button.style.width = "160px";
+                start_button.style.height = "160px";
+                start_button_1.style.left= "20px";
+                start_button_1.style.top= "20px";
+                start_img.src = "../Picture/Start1.png";
+            }
+            function out() {
+                start_button.style.left= "325px";
+                start_button.style.top = "300px";
+                start_button.style.width = "150px";
+                start_button.style.height = "150px";
+                start_button_1.style.left= "15px";
+                start_button_1.style.top= "15px";
+                start_img.src = "../Picture/Start0.png";
             }
         </script>
     </div>
+    <div id="restart_button" style="left: 300px; top: 450px; display: none;" onclick="restart()">Restart</div>
 </div>
 <script>
-    var ball_1 = document.getElementsByClassName("ball_1");
-    ball_1.
+    var start_button = document.getElementById("start_button");
+    var restart_button = document.getElementById("restart_button");
+    var gamedisplay = document.getElementById("game_display");
+    var status = 1;
+    var ball = [
+        document.getElementById("ball_0"),
+        document.getElementById("ball_1"),
+        document.getElementById("ball_2"),
+        document.getElementById("ball_3"),
+        document.getElementById("ball_4"),
+        document.getElementById("ball_5")
+    ];
+    var score = 0;
+    function start() {
+        start_button.style.display = 'none';
+        gamedisplay.style.display = 'block';
+        restart_button.style.display = 'block';
+    }
+    function restart() {
+        restart_button.style.display = 'none';
+        gamedisplay.style.display = 'none';
+        start_button.style.display = 'block';
+        for (var i = 0; i < 6; i++) {
+            ball[i].style.left = (30 * i + 25) + "px";
+        }
+    }
+    function score_increase(_score) {
+        var count = 0;
+        var pos = 25 + ((5-_score) * 30);
+        var t = setInterval(move, 3);
+        function move() {
+            if (count >= 280) {
+                clearInterval(t);
+            }
+            else {
+                pos += 1;
+                count ++;
+                ball[5-_score].style.left = pos + "px";
+            }
+        }
+        score++;
+    }
+    function score_decrease(_score) {
+        ball[6-_score].style.background = 'red';
+        var count = 0;
+        var pos = 485 - (_score * 30);
+        var t = setInterval(move, 3);
+        function move() {
+            if (count >= 280) {
+                ball[6-_score].style.background = "lawngreen";
+                clearInterval(t);
+            }
+            else {
+                pos -= 1;
+                count ++;
+                ball[6-_score].style.left = pos + "px";
+            }
+        }
+        score--;
+    }
 </script>
 </body>
 </html>
