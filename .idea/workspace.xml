@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da942a58-e74c-41f4-a5a5-3345e6f8a19c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Picture/Game1-Picture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sources/Game3.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sources/Game1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/Game1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/Main.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +32,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -41,6 +45,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -51,6 +56,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Picture" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -81,7 +91,13 @@
       <workItem from="1585382536648" duration="241000" />
       <workItem from="1585396760446" duration="3608000" />
       <workItem from="1585417496769" duration="1724000" />
-      <workItem from="1585447429320" duration="4059000" />
+      <workItem from="1585447429320" duration="4302000" />
+      <workItem from="1585545119234" duration="2040000" />
+      <workItem from="1585549299092" duration="3877000" />
+      <workItem from="1585567951388" duration="497000" />
+      <workItem from="1585576281251" duration="577000" />
+      <workItem from="1585576864417" duration="234000" />
+      <workItem from="1585577118807" duration="2669000" />
     </task>
     <servers />
   </component>
