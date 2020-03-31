@@ -3,7 +3,10 @@
 <head>
     <title>Game 1</title>
     <meta charset="UTF-8">
-    <style>
+    <style type="text/css">
+        body {
+            font-family: Verdana;
+        }
         #container {
             width: 800px;
             height: 600px;
@@ -66,6 +69,23 @@
             left: 7px;
             font-size: 20px;
             color: red;
+            position: absolute;
+        }
+        #attention_box {
+            width: 350px;
+            height: 120px;
+            top: 350px;
+            left: 100px;
+            display: none;
+            text-align: center;
+            background: palegoldenrod;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            border: 5px solid indianred;
+            -moz-border-radius: 350px / 120px;
+            -webkit-border-radius: 350px / 120px;
+            border-radius: 350px / 120px;
             position: absolute;
         }
     </style>
@@ -149,17 +169,19 @@
             }
         </script>
     </div>
-    <div id="home_button" style="left: 260px; top: 200px; font-size: 30px; display: none; position: absolute">
-        <p><a href="Main.html"> Trở về màn hình chính </a></p>
+    <div id="home_button" style="left: 305px; top: 200px; font-size: 30px; display: none; position: absolute">
+        <p><a href="Main.html"> Go to lesson </a></p>
     </div>
+    <div id="attention_box">check</div>
 </div>
 <script>
+    var attention_box = document.getElementById("attention_box");
     var container = document.getElementById("container");
     var text = document.getElementsByClassName("text");
     var start_button = document.getElementById("start_button");
     var game_display = document.getElementById("game_display");
     var stage = 0;
-    var status;
+    var status = 0;
     var ball = document.getElementsByClassName("ball");
     var box = document.getElementsByClassName("box");
     var score = 0;
@@ -176,6 +198,7 @@
     window.addEventListener('resize', fixSize);
     new_question();
     function start() {
+        status = 1;
         var t = setInterval(show, 20);
         var count = 0;
         function show() {
@@ -191,6 +214,7 @@
         }
     }
     function restart() {
+        status = 0;
         game_display.style.opacity = 0.2;
         stage++;
         index = -1;
@@ -223,7 +247,8 @@
         var i = 0;
         select_box(i);
         addEventListener('keydown', function(event) {
-            if (i < 3 && question[i] != -1 ) {
+            console.log(status);
+            if (status == 1 && i < 3 && question[i] != -1) {
                 if (event.keyCode == question[i] + 48) {
                     set_box_none(i);
                     i++;
@@ -239,6 +264,7 @@
                 } else if (event.keyCode >= 48 && event.keyCode <= 57) {
                     box[i].style.border = "3px solid red";
                     text[i].innerHTML = event.keyCode - 48;
+                    attention(question[i]);
                     if (correct == 1) {
                         correct = 0;
                         if (score > stage*3) {
@@ -259,7 +285,8 @@
     }
     function set_box_none (index) {
         box[index].style.display = 'none';
-    }
+        attention_box.style.display = 'none'
+;    }
     function select_box(index) {
         box[index].style.top = "60px";
         box[index].style.border = "3px solid #FFC917";
@@ -278,6 +305,11 @@
                 ball[9-score].style.left = pos + "px";
             }
         }
+    }
+    function attention(number) {
+        attention_box.innerText = "After " + (number -1) + " comes " + number;
+        attention_box.style.display = 'block';
+        attention_box.style.display = "flex";
     }
     function score_decrease() {
         ball[8-score].style.background = 'red';
