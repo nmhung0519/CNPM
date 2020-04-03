@@ -31,7 +31,6 @@
                 height: 10px;
                 top: -5px;
                 left: -4px;
-                cursor: pointer;
                 border-radius: 6px;
                 background: black;
                 position: absolute;
@@ -45,7 +44,6 @@
             }
         </style>
         <script src="resize.js"></script>
-        <script src="drag_and_drop.js"></script>
     </head>
     <body onload="fixPosition()">
         <div id="container">
@@ -87,6 +85,7 @@
                     <div class="point" style="left: 450px"></div>
                     <div class="point" style="width: 2px; left: 500px"></div>
                     <div id="dot" onmousedown="mousedown(event)" >
+                        <div style="top: -85px; left: -18px; position: absolute"><img id="grasshopper" src = "../Picture/grasshopper1.png"></div>
                         <div id="box"></div>
                     </div>
                 </div>
@@ -124,10 +123,16 @@
             </div>
         </div>
         <script>
-            var box = document.getElementsByClassName("box");
             var index = 0;
             var start_button = document.getElementById("start_button");
+            var dot = document.getElementById("dot");
+            var x;
+            var dot_left = -5;
+            var status = 0;
+            var canMove = 0;
             function start() {
+                dot.style.cursor = 'pointer';
+                canMove = 1;
                 var count = 0;
                 var t = setInterval(show, 20);
                 function show() {
@@ -144,28 +149,27 @@
                 new_question();
             }
             function new_question() {
-                box[index].style.display = 'block';
+                
             }
-            var dot = document.getElementById("dot");
-            var container = document.getElementById("container");
-            var x;
-            var dot_left = -5;
-            var status = 0;
             function mousedown(ev) {
                 x = ev.x;
-                status = 1;
+                if (canMove == 1) {
+                    status = 1;
+                    document.getElementById("grasshopper").src = "../Picture/grasshopper2.png";
+                }
                 document.addEventListener('mousemove', function (evt) {
                     if (status == 1) {
                         dot_left =  dot_left + event.x - x;
                         x = event.x;
                         if (dot_left < -4) dot.style.left = "-5px";
-                        else if (dot_left > 496) dot.style.left = "595px";
+                        else if (dot_left > 496) dot.style.left = "496px";
                         else dot.style.left = dot_left + "px";
                     }
                 });
             }
             addEventListener('mouseup', function () {
                 status = 0;
+                document.getElementById("grasshopper").src = "../Picture/grasshopper1.png";
                 console.log(dot_left);
                 if (dot_left > 496) dot_left = 496;
                 else if (dot_left < -4) dot_left = -4;
