@@ -126,17 +126,20 @@
         var status = 0;
         var ball = document.getElementsByClassName("ball");
         var box = document.getElementsByClassName("box");
-
+        var grasshopper = document.getElementById("grasshopper");
         var number = document.getElementsByClassName("number");
         // To show number: number[-index-].style.display: block;
 
         var score = 0;
         var correct;
+        make_question();
         function start() {
             status = 1;
             var t = setInterval(show, 20);
             var count = 0;
+
             function show() {
+                
                 if (count == 8) {
                     clearInterval(t);
                     start_button.style.display = 'none';
@@ -148,6 +151,32 @@
                 }
             }
         }
+
+        function make_question() {
+            var k = Math.floor(Math.random() * 10);
+            setgrasshopper(k);
+            addEventListener('keydown' , function(event) {
+                if(event.keyCode >= 48 && event.keyCode <= 57){
+                    if(event.keyCode == k + 48) {
+                        score++;
+                        score_increase();
+                        if(score < 9)   make_question();
+                        else document.getElementById("home_button").style.display = 'block';
+                    }
+                    else {
+                        if(score > 0 )  score_decrease();
+                        make_question();
+                    }
+                }
+            })
+        }
+
+        function setgrasshopper(a) {
+            var pos = 23 + a * 50;
+            grasshopper.style.left = pos + "px";
+        }
+
+
 
         function score_increase() {
             var count = 0;
