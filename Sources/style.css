@@ -1,6 +1,13 @@
 body {
     font-family: Verdana;
     background-color: cornflowerblue;
+    background-image: linear-gradient(to right, #F9A8FF, #5CD9FF);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 #container {
     width: 800px;

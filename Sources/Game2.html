@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Game 1</title>
+    <title>Game 2</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" tyle="text/css" href="style.css">
     <style>
+        body {
+            background-color: cornflowerblue;
+        }
+        div.number {
+            display: none;
+        }
         div.box {
             width: 26px;
             height: 28px;
@@ -81,15 +87,6 @@
             <div class="point" style="left: 450px"></div>
             <div class="point" style="width: 2px; left: 500px"></div>
         </div>
-        <div class="box">
-            <div class="text">1</div>
-        </div>
-        <div class="box" style="display: none">
-            <div class="text">1</div>
-        </div>
-        <div class="box" style="display: none">
-            <div class="text">1</div>
-        </div>
     </div>
     <div id="start_button" style="left: 325px; top: 300px;" onclick="start()" onmouseover="over()" onmouseout="out()">
         <div id="start_button_1" style="left: 15px; top: 15px; width: 120px; height: 120px; border-radius: 15px; position:relative">
@@ -124,154 +121,71 @@
     </div>
     <div id="attention_box">check</div>
 </div>
-<script>
-    var attention_box = document.getElementById("attention_box");
-    var text = document.getElementsByClassName("text");
-    var start_button = document.getElementById("start_button");
-    var game_display = document.getElementById("game_display");
-    var stage = 0;
-    var status = 0;
-    var ball = document.getElementsByClassName("ball");
-    var box = document.getElementsByClassName("box");
-    var score = 0;
-    var question1 = [[1, 7, -1], [3, 9, -1], [2, 6, -1], [5, 9, -1], [4, 7, -1], [2, 6, -1]];
-    var question2=  [[2, 3, -1], [7,8, -1], [5, 6, -1], [8, 9, -1], [1, 2, -1], [4, 5, -1]];
-    var question3 = [[5, 7, 9], [4, 6, 9], [1, 3, 8], [2, 5, 8], [1, 4, 8], [2, 5, 9]];
-    var index = -1;
-    var correct;
-    new_question();
-    function start() {
-        status = 1;
-        var t = setInterval(show, 20);
-        var count = 0;
-        function show() {
-            if (count == 8) {
-                clearInterval(t);
-                start_button.style.display = 'none';
-            }
-            else {
-                count ++;
-                game_display.style.opacity = (count * 0.1) + 0.2;
-                start_button.style.opacity = 1 - (count * 0.1);
-            }
-        }
-    }
-    function restart() {
-        status = 0;
-        game_display.style.opacity = 0.2;
-        stage++;
-        index = -1;
-        new_question()
-        if (stage < 3) {
-            index = 0;
-            start_button.style.opacity = 1;
-            start_button.style.display = 'block';
-        }
-        else {
-            document.getElementById("home_button").style.display = 'block';
-        }
-    }
-    function new_question() {
-        correct = 1;
-        index++;
-        if (stage == 0) {
-            make_question(question1[index%=6]);
-        }
-        else if (stage == 1) {
-            make_question(question2[index%=6]);
-        }
-        else if (stage == 2) {
-            make_question(question3[index%=6]);
-        }
-    }
-    function make_question(question) {
-        for (var i = 0; i < 3; i++)
-            if (question[i] != -1) set_box_block(i, question[i]);
-        var i = 0;
-        select_box(i);
-        addEventListener('keydown', function(event) {
-            console.log(status);
-            if (status == 1 && i < 3 && question[i] != -1) {
-                if (event.keyCode == question[i] + 48) {
-                    set_box_none(i);
-                    i++;
-                    if (i == 3 || question[i] == -1) {
-                        if (correct == 1) {
-                            score++;
-                            score_increase();
-                            if (score % 3 != 0) new_question();
-                            else restart();
-                        }
-                        else new_question();
-                    } else select_box(i);
-                } else if (event.keyCode >= 48 && event.keyCode <= 57) {
-                    box[i].style.border = "3px solid red";
-                    text[i].innerHTML = event.keyCode - 48;
-                    attention(question[i]);
-                    if (correct == 1) {
-                        correct = 0;
-                        if (score > stage*3) {
-                            score--;
-                            score_decrease();
-                        }
-                    }
+    <script>
+        var attention_box = document.getElementById("attention_box");
+        var text = document.getElementsByClassName("text");
+        var start_button = document.getElementById("start_button");
+        var game_display = document.getElementById("game_display");
+        var stage = 0;
+        var status = 0;
+        var ball = document.getElementsByClassName("ball");
+        var box = document.getElementsByClassName("box");
+
+        var number = document.getElementsByClassName("number");
+        // To show number: number[-index-].style.display: block;
+
+        var score = 0;
+        var correct;
+        function start() {
+            status = 1;
+            var t = setInterval(show, 20);
+            var count = 0;
+            function show() {
+                if (count == 8) {
+                    clearInterval(t);
+                    start_button.style.display = 'none';
+                }
+                else {
+                    count ++;
+                    game_display.style.opacity = (count * 0.1) + 0.2;
+                    start_button.style.opacity = 1 - (count * 0.1);
                 }
             }
-        })
-    }
-    function set_box_block(index, number) {
-        text[index].innerHTML = " ";
-        box[index].style.top = "64px"
-        box[index].style.border = 'none';
-        box[index].style.left = 27 + (50*number) + "px";
-        box[index].style.display='block';
-    }
-    function set_box_none (index) {
-        box[index].style.display = 'none';
-        attention_box.style.display = 'none'
-;    }
-    function select_box(index) {
-        box[index].style.top = "60px";
-        box[index].style.border = "3px solid #FFC917";
-    }
-    function score_increase() {
-        var count = 0;
-        var pos = 15 + ((9-score) * 25);
-        var t = setInterval(move, 1);
-        function move() {
-            if (count >= 85) {
-                clearInterval(t);
-            }
-            else {
-                pos += 3;
-                count ++;
-                ball[9-score].style.left = pos + "px";
-            }
         }
-    }
-    function attention(number) {
-        attention_box.innerText = "After " + (number -1) + " comes " + number;
-        attention_box.style.display = 'block';
-        attention_box.style.display = "flex";
-    }
-    function score_decrease() {
-        ball[8-score].style.background = 'red';
-        var count = 0;
-        var pos = 465 - (score * 25);
-        var t = setInterval(move, 1);
-        function move() {
-            if (count >= 85) {
-                ball[8-score].style.background = "lawngreen";
-                clearInterval(t);
-            }
-            else {
-                pos -= 3;
-                count += 1;
-                ball[8-score].style.left = pos + "px";
-            }
-        }
-    }
-</script>
 
+        function score_increase() {
+            var count = 0;
+            var pos = 15 + ((9-score) * 25);
+            var t = setInterval(move, 1);
+            function move() {
+                if (count >= 85) {
+                    clearInterval(t);
+                }
+                else {
+                    pos += 3;
+                    count ++;
+                    ball[9-score].style.left = pos + "px";
+                }
+            }
+        }
+
+        function score_decrease() {
+            ball[8-score].style.background = 'red';
+            var count = 0;
+            var pos = 465 - (score * 25);
+            var t = setInterval(move, 1);
+            function move() {
+                if (count >= 85) {
+                    ball[8-score].style.background = "lawngreen";
+                    clearInterval(t);
+                }
+                else {
+                    pos -= 3;
+                    count += 1;
+                    ball[8-score].style.left = pos + "px";
+                }
+            }
+        }
+    </script>
 </body>
 </html>
