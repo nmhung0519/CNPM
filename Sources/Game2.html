@@ -49,7 +49,7 @@
 <body onload="fixPosition()">
 <div id="container">
     <div id="back_button" style="left: 20px; top: 30px; font-size: 20px; position: absolute;"><a href="Main.html" draggable="false">&#60; Back</a> </div>
-    <div id="displayScore" style="left: 150px; top: 20px">
+    <div id="displayScore">
         <div class="ball" style="left: 10px; top: 10px"></div>
         <div class="ball" style="left: 35px; top: 10px"></div>
         <div class="ball" style="left: 60px; top: 10px"></div>
@@ -60,63 +60,41 @@
         <div class="ball" style="left: 185px; top: 10px"></div>
         <div class="ball" style="left: 210px; top: 10px"></div>
     </div>
-    <div style="width: 800px; height: 1px; top: 75px; background: lightgrey; position: absolute"></div>
-    <div id="game_display" style="width: 600px; height: 110px; border: 25px; background: #FFCC99; border-radius: 25px;left: 100px; top: 100px; position: relative; opacity: 0.2">
-        <div class="number" style="left: 33px; top: 68px; font-size: 23px; font-weight: bold; opacity: 1">0</div>
-        <div class="number" style="left: 83px">1</div>
-        <div class="number" style="left: 133px">2</div>
-        <div class="number" style="left: 183px">3</div>
-        <div class="number" style="left: 233px">4</div>
-        <div class="number" style="left: 283px; top: 68px; font-size: 23px; font-weight: bold; opacity: 1">5</div>
-        <div class="number" style="left: 333px">6</div>
-        <div class="number" style="left: 383px">7</div>
-        <div class="number" style="left: 433px">8</div>
-        <div class="number" style="left: 483px">9</div>
-        <div class="number" style="left: 525px; top: 68px; font-size: 23px; font-weight: bold; opacity: 1">10</div>
-        <div style="width: 540px; background: black; height: 1px; float: left; left: 37px; top: 32px; position: absolute">
-            <div style="left: 532px; top: -10px; position: absolute">&#62;</div>
+    <div style="width: 1000px; height: 1px; top: 75px; background: lightgrey; position: absolute"></div>
+    <div id="game_display">
+        <div class="number" style="left: 32px; top: 68px; font-size: 23px; font-weight: bold; opacity: 1">0</div>
+        <div class="number" style="left: 102px">1</div>
+        <div class="number" style="left: 173px">2</div>
+        <div class="number" style="left: 243px">3</div>
+        <div class="number" style="left: 313px">4</div>
+        <div class="number" style="left: 383px; top: 68px; font-size: 23px; font-weight: bold; opacity: 1">5</div>
+        <div class="number" style="left: 453px">6</div>
+        <div class="number" style="left: 523px">7</div>
+        <div class="number" style="left: 593px">8</div>
+        <div class="number" style="left: 663px">9</div>
+        <div class="number" style="left: 725px; top: 68px; font-size: 23px; font-weight: bold; opacity: 1">10</div>
+        <div id="line">
+            <div style="left: 708px; top: -14px; position: absolute; font-size: 22px">&#62;</div>
             <div class="point" style="width: 2px"></div>
-            <div class="point" style="left: 50px"></div>
-            <div class="point" style="left: 100px"></div>
-            <div class="point" style="left: 150px"></div>
-            <div class="point" style="left: 200px"></div>
-            <div class="point" style="width: 2px; left: 250px"></div>
-            <div class="point" style="left: 300px"></div>
-            <div class="point" style="left: 350px"></div>
-            <div class="point" style="left: 400px"></div>
-            <div class="point" style="left: 450px"></div>
-            <div class="point" style="width: 2px; left: 500px"></div>
+            <div class="point" style="left: 70px"></div>
+            <div class="point" style="left: 140px"></div>
+            <div class="point" style="left: 210px"></div>
+            <div class="point" style="left: 280px"></div>
+            <div class="point" style="width: 2px; left: 350px"></div>
+            <div class="point" style="left: 420px"></div>
+            <div class="point" style="left: 490px"></div>
+            <div class="point" style="left: 560px"></div>
+            <div class="point" style="left: 630px"></div>
+            <div class="point" style="width: 2px; left: 700px"></div>
         </div>
     </div>
-    <div id="start_button" style="left: 325px; top: 300px;" onclick="start()" onmouseover="over()" onmouseout="out()">
+    <div id="start_button" onmouseclick="start()" onmouseover="over()" onmouseout="out()">
         <div id="start_button_1" style="left: 15px; top: 15px; width: 120px; height: 120px; border-radius: 15px; position:relative">
             <img id = "start_img" src="../Picture/Start0.png" width="120px" height="120px" style="border-radius: 120px" draggable="false">
         </div>
-        <script>
-            var start_button = document.getElementById("start_button");
-            var start_button_1 = document.getElementById("start_button_1");
-            var start_img = document.getElementById("start_img");
-            function over() {
-                start_button.style.left = "320px";
-                start_button.style.top = "295px"
-                start_button.style.width = "160px";
-                start_button.style.height = "160px";
-                start_button_1.style.left= "20px";
-                start_button_1.style.top= "20px";
-                start_img.src = "../Picture/Start1.png";
-            }
-            function out() {
-                start_button.style.left= "325px";
-                start_button.style.top = "300px";
-                start_button.style.width = "150px";
-                start_button.style.height = "150px";
-                start_button_1.style.left= "15px";
-                start_button_1.style.top= "15px";
-                start_img.src = "../Picture/Start0.png";
-            }
-        </script>
+        <script src="mouse_on_startButton.js"></script>
     </div>
-    <div id="home_button" style="left: 305px; top: 200px; font-size: 30px; display: none; position: absolute">
+    <div id="home_button">
         <p><a href="Main.html"> Go to lesson </a></p>
     </div>
     <div id="attention_box">check</div>
@@ -152,40 +130,7 @@
                 }
             }
         }
-
-        function score_increase() {
-            var count = 0;
-            var pos = 15 + ((9-score) * 25);
-            var t = setInterval(move, 1);
-            function move() {
-                if (count >= 85) {
-                    clearInterval(t);
-                }
-                else {
-                    pos += 3;
-                    count ++;
-                    ball[9-score].style.left = pos + "px";
-                }
-            }
-        }
-
-        function score_decrease() {
-            ball[8-score].style.background = 'red';
-            var count = 0;
-            var pos = 465 - (score * 25);
-            var t = setInterval(move, 1);
-            function move() {
-                if (count >= 85) {
-                    ball[8-score].style.background = "lawngreen";
-                    clearInterval(t);
-                }
-                else {
-                    pos -= 3;
-                    count += 1;
-                    ball[8-score].style.left = pos + "px";
-                }
-            }
-        }
     </script>
+    <script src="change_score.js"></script>
 </body>
 </html>

@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da942a58-e74c-41f4-a5a5-3345e6f8a19c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Picture/grasshopper1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Picture/grasshopper2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sources/change_score.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sources/mouse_on_startButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sources/Game1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/Game1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/Game2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/Game2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sources/Game3.html" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/Game3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/resize.js" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/resize.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,8 +34,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -106,7 +108,10 @@
       <workItem from="1585890066831" duration="597000" />
       <workItem from="1585905995880" duration="8081000" />
       <workItem from="1585929249244" duration="704000" />
-      <workItem from="1585930197535" duration="2417000" />
+      <workItem from="1585930197535" duration="2508000" />
+      <workItem from="1585973646053" duration="6087000" />
+      <workItem from="1585987835018" duration="9568000" />
+      <workItem from="1586008250334" duration="3810000" />
     </task>
     <servers />
   </component>
