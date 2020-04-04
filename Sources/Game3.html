@@ -3,62 +3,18 @@
     <head>
         <title>Game 3</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <style>
-            #container {
-                width: 800px;
-                height: 600px;
-                border-radius: 40px;
-                background: antiquewhite;
-                position: relative;
-            }
-            #start_button {
-                width: 150px;
-                height: 150px;
-                background: #82B366;
-                border-radius: 150px;
-                position: absolute;
-            }
-            #displayScore {
-                width: 500px;
-                height: 40px;
-                background: darkgrey;
-                border-radius: 40px;
-                position: relative;
-            }
-            div.ball {
-                width: 20px;
-                height: 20px;
-                background: lawngreen;
-                border-radius: 20px;
-                position: absolute;
-            }
-            body {
-                background-color: cornflowerblue;
-            }
-            div.box {
-                width: 26px;
-                height: 28px;
-                top: 64px;
-                background: white;
-                border-radius: 5px;
-                position: absolute;
-            }
-            div.point {
-                height: 24px;
-                width: 1px;
-                top: -12px;
-                background: black;
-                position: absolute;
-            }
             div.number {
-                top: 70px;
-                font-size: 20px;
-                position: absolute;
+                display:none
             }
-            div.special_number {
-                top: 67px;
-                font-size: 23px;
-                font-weight: bold;
+            #dot {
+                width: 10px;
+                height: 10px;
+                top: -5px;
+                left: -4px;
+                border-radius: 6px;
+                background: black;
                 position: absolute;
             }
             div.text {
@@ -68,88 +24,100 @@
                 color: red;
                 position: absolute;
             }
+            #OK_button {
+                height: 40px;
+                width: 90px;
+                top: 500px;
+                left: 445px;
+                border-radius: 150px;
+                border: 10px solid lawngreen;
+                display: none;
+                opacity: 0.3;
+                background: #82B366;
+                position: absolute;
+            }
         </style>
+        <script src="resize.js"></script>
     </head>
-    <body>
-        <div id="container">
-            <div id="back_button" style="left: 20px; top: 30px; font-size: 20px; position: absolute;"><a href="Main.html">&#60; Back</a> </div>
-            <div id="displayScore" style="left: 150px; top: 20px">
+    <body onload="fixPosition()">
+        <div id="container" style="top: 105.333px; left: -425px;">
+            <div id="back_button" draggable="false" style="left: 20px; top: 30px; font-size: 20px; position: absolute;">
+                <a href="Main.html" draggable="false">< Back</a>
+            </div>
+            <div id="displayScore">
                 <div class="ball" style="left: 10px; top: 10px"></div>
                 <div class="ball" style="left: 35px; top: 10px"></div>
                 <div class="ball" style="left: 60px; top: 10px"></div>
-                <div class="ball "style="left: 85px; top: 10px"></div>
-                <div class="ball"style="left: 110px; top: 10px"></div>
+                <div class="ball " style="left: 85px; top: 10px"></div>
+                <div class="ball" style="left: 110px; top: 10px"></div>
                 <div class="ball" style="left: 135px; top: 10px"></div>
                 <div class="ball" style="left: 160px; top: 10px"></div>
                 <div class="ball" style="left: 185px; top: 10px"></div>
                 <div class="ball" style="left: 210px; top: 10px"></div>
             </div>
-            <div id="game_display" style="width: 600px; height: 110px; border: 25px; background: #FFCC99; border-radius: 25px;left: 100px; top: 300px; position: relative; opacity: 0.2">
-                <div class="special_number" style="left: 33px">0</div>
-                <div class="special_number" style="left: 283px">5</div>
-                <div class="special_number" style="left: 525px">10</div>
-                <div style="width: 540px; background: black; height: 1px; float: left; left: 37px; top: 32px; position: absolute">
-                    <div style="left: 535px; top: -9px; position: absolute">&#62;</div>
+            <div style="width: 1000px; height: 1px; top: 75px; background: lightgrey; position: absolute"></div>
+            <div id="game_display" style="top: 300px; opacity: 0.2">
+                <div class="number" style="left: 32px; top: 68px; font-size: 23px; font-weight: bold; display: block">0</div>
+                <div class="number" style="left: 102px;">1</div>
+                <div class="number" style="left: 173px;">2</div>
+                <div class="number" style="left: 243px;">3</div>
+                <div class="number" style="left: 313px;">4</div>
+                <div class="number" style="left: 383px; top: 68px; font-size: 23px; font-weight: bold">5</div>
+                <div class="number" style="left: 453px">6</div>
+                <div class="number" style="left: 523px">7</div>
+                <div class="number" style="left: 593px">8</div>
+                <div class="number" style="left: 663px">9</div>
+                <div class="number" style="left: 725px; top: 68px; font-size: 23px; font-weight: bold">10</div>
+                <div id="line">
+                    <div style="left: 708px; top: -14px; position: absolute; font-size: 22px">></div>
                     <div class="point" style="width: 2px"></div>
-                    <div class="point" style="left: 50px"></div>
-                    <div class="point" style="left: 100px"></div>
-                    <div class="point" style="left: 150px"></div>
-                    <div class="point" style="left: 200px"></div>
-                    <div class="point" style="width: 2px; left: 250px"></div>
-                    <div class="point" style="left: 300px"></div>
-                    <div class="point" style="left: 350px"></div>
-                    <div class="point" style="left: 400px"></div>
-                    <div class="point" style="left: 450px"></div>
-                    <div class="point" style="width: 2px; left: 500px"></div>
+                    <div class="point" style="left: 70px"></div>
+                    <div class="point" style="left: 140px"></div>
+                    <div class="point" style="left: 210px"></div>
+                    <div class="point" style="left: 280px"></div>
+                    <div class="point" style="width: 2px; left: 350px"></div>
+                    <div class="point" style="left: 420px"></div>
+                    <div class="point" style="left: 490px"></div>
+                    <div class="point" style="left: 560px"></div>
+                    <div class="point" style="left: 630px"></div>
+                    <div class="point" style="width: 2px; left: 700px"></div>
+                    <div id="dot" onmousedown="mousedown(event)" style="left: -4px; cursor: default;">
+                        <div style="top: -67px; left: -18px; position: absolute">
+                            <img id="grasshopper" src="../Picture/grasshopper1.png" draggable="false" style="margin-top: 0px;">
+                        </div>
+                    </div>
+                    <div id="box" class="box" style="border: 5px solid gold; top: 30px; display: none"></div>
                 </div>
             </div>
-            <div id="start_button" style="left: 325px; top: 300px; cursor: pointer" onclick="start()" onmouseover="over()" onmouseout="out()">
-                <div id="start_button_1" style="left: 15px; top: 15px; width: 120px; height: 120px; border-radius: 15px; position:absolute">
-                    <img id = "start_img" src="../Picture/Start0.png" width="120px" height="120px" style="border-radius: 120px">
+            <div id="start_button" onclick="start()" onmouseover="over()" onmouseout="out()" style="left: 425px; top: 300px; width: 150px; height: 150px">
+                <div id="start_button_1" style="left: 15px; top: 15px; width: 120px; height: 120px; border-radius: 15px; position: absolute;">
+                    <img id="start_img" src="../Picture/Start0.png" width="120px" height="120px" style="border-radius: 120px" draggable="false">
                 </div>
-                <div style="width: 160px; height: 160px; left: 0px; right: 0px; border-radius: 325px; background: none; position: absolute"></div>
-                <script>
-                var start_button = document.getElementById("start_button");
-                var start_button_1 = document.getElementById("start_button_1");
-                var start_img = document.getElementById("start_img");
-                function over() {
-                    start_button.style.left = "320px";
-                    start_button.style.top = "295px"
-                   start_button.style.width = "160px";
-                    start_button.style.height = "160px";
-                    start_button_1.style.left= "20px";
-                    start_button_1.style.top= "20px";
-                   start_img.src = "../Picture/Start1.png";
-                }
-                function out() {
-                    start_button.style.left= "325px";
-                    start_button.style.top = "300px";
-                    start_button.style.width = "150px";
-                    start_button.style.height = "150px";
-                    start_button_1.style.left= "15px";
-                   start_button_1.style.top= "15px";
-                   start_img.src = "../Picture/Start0.png";
-                }
-            </script>
+                <script src="mouse_on_startButton.js"></script>
             </div>
-            <div id="home_button" style="left: 260px; top: 200px; font-size: 30px; display: none; position: absolute">
-                <p><a href="Main.html"> Trở về màn hình chính </a></p>
+            <div id="home_button">
+                <p><a href="Main.html"> Go to Lesson </a></p>
             </div>
-            <div style="width: 800px; height: 1px; top: 75px; background: lightgrey; position: absolute"></div>
+            <div id="OK_button"></div>
         </div>
         <script>
-            var container = document.getElementById("container");
+            var index = 0;
+            var box = document.getElementById("box");
+            var number = document.getElementsByClassName("number");
+            var grasshopper = document.getElementById("grasshopper");
             var start_button = document.getElementById("start_button");
-            function fixSize() {
-                container.style.top = (window.innerHeight - 600)/3 + "px";
-                container.style.left = (window.innerWidth - 800)/2 + "px";
-            }
-            fixSize();
-            window.addEventListener('resize', fixSize);
+            var dot = document.getElementById("dot");
+            var OK_button = document.getElementById("OK_button");
+            var x;
+            var dot_left = -5;
+            var status = 0;
+            var canMove = 0;
+            var canPress = 0;
+            var stage = 0;
             function start() {
-                var t = setInterval(show, 20);
+                canMove = 0;
                 var count = 0;
-                show();
+                var t = setInterval(show, 20);
                 function show() {
                     if (count == 8) {
                         clearInterval(t);
@@ -161,7 +129,162 @@
                         start_button.style.opacity = 1 - (count * 0.1);
                     }
                 }
+                index = 1;
+                setTimeout(new_question, 1000);
+            }
+            function restart() {
+                game_display.style.opacity = 0.2;
+                stage++;
+                index = 0;
+                OK_button.style.display = 'block';
+                if (stage < 3) {
+                    var t = setInterval(move_back_0, 1);
+                    start_button.style.opacity = 1;
+                    start_button.style.display = 'block';
+                }
+                else {
+                    document.getElementById("home_button").style.display = 'block';
+                }
+                function move_back_0() {
+                    if (dot_left == -4) clearInterval(t);
+                    else {
+                        dot_left -= 5;
+                        dot.style.left = dot_left + "px";
+                    }
+                }
+            }
+            function new_question() {
+                var count = 0;
+                if (stage == 0) {
+                    if (index < 6) {
+                        var t = setInterval(jump, 5);
+                        console.log(index);
+                    }
+                    else if (index < 10) {
+                        make_question();
+                    }
+                    else restart();
+                }
+                function jump() {
+                    if (count >= 70) {
+                        clearInterval(t);
+                        make_question();
+                    }
+                    else {
+                        count += 1;
+                        dot_left += 1;
+                        dot.style.left = dot_left + "px";
+                        if (count <= 35) grasshopper.style.marginTop = - (count) + "px";
+                        else grasshopper.style.marginTop = - (70 - count) + "px";
+                    }
+                }
+            }
+            function make_question() {
+                if (stage == 0) {
+                    if (index < 6) {
+                        setTimeout(set_box_block, 500, index);
+                        if (index < 3) setTimeout(correct, 1500);
+                        else if (index < 6) {
+                            setTimeout(set_box_block, 500, index);
+                            setTimeout(canPress = 1, 1000);
+                        }
+                    }
+                    else if (index < 10) {
+                        canMove = 1;
+                        dot.style.cursor = 'pointer';
+                    }
+                    else {
+                        restart();
+                    }
+                }
+                addEventListener('keydown', function(event) {
+                    if (canPress == 1) {
+                        if (event.keyCode >= 48 && event.keyCode <= 57) {
+                            if (event.keyCode == index + 48) {
+                                if (box.style.display == "block") correct();
+                            }
+                            else {
+                                box.innerHTML = event.keyCode - 48;
+                            }
+                        }
+                    }
+                });
+                function correct() {
+                    setTimeout(showAnswer, 0, index);
+                    setTimeout(set_box_none, 0);
+                    setTimeout(index += 1, 999);
+                    setTimeout(new_question, 1000);
+                }
+            }
+            function showAnswer(n) {
+                number[n].style.display = 'block';
+                console.log("show answer");
+            }
+            function mousedown(ev) {
+                x = ev.x;
+                if (canMove == 1) {
+                    status = 1;
+                    document.getElementById("grasshopper").style.marginTop = "-5px";
+                }
+                document.addEventListener('mousemove', function (evt) {
+                    if (status == 1) {
+                        dot_left =  dot_left + event.x - x;
+                        x = event.x;
+                        if (dot_left < -4) dot.style.left = "-4px";
+                        else if (dot_left > 696) dot.style.left = "696px";
+                        else dot.style.left = dot_left + "px";
+                    }
+                });
+            }
+            addEventListener('mouseup', function () {
+                if (status == 1) {
+                    status = 0;
+                    document.getElementById("grasshopper").style.marginTop = '0px';
+                    document.getElementById("grasshopper").src = "../Picture/grasshopper1.png";
+                    console.log(dot_left);
+                    if (dot_left > 696) {
+                        dot_left = 696;
+                    }
+                    else if (dot_left < -4) {
+                        dot_left = -4;
+                    }
+                    else {
+                        var tmp = Math.round((dot_left + 4) / 70) * 70 - 4;
+                        console.log(tmp);
+                        var change;
+                        if (tmp > dot_left) {
+                            change = 1;
+                        } else change = -1;
+                        var t = setInterval(move_to_near, 10);
+
+                        function move_to_near() {
+                            if (dot_left == tmp) {
+                                clearInterval(t);
+                                if (dot_left + 4 == 70 * index) {
+                                    canMove = 0;
+                                    dot.style.cursor = "default";
+                                    setTimeout(set_box_block, 500, index);
+                                    setTimeout(canPress = 1, 1000);
+                                }
+                            } else {
+                                dot_left += change;
+                                dot.style.left = dot_left + "px";
+                            }
+                        }
+                    }
+
+                }
+            });
+            function set_box_block(number) {
+                box.style.left = number * 70 - 15 + "px";
+                box.style.display = 'block';
+            }
+            function set_box_none() {
+                canPress = 0;
+                box.innerHTML = "";
+                box.style.display = 'none';
             }
         </script>
+        <script type= "change_score.js"></script>
     </body>
 </html>

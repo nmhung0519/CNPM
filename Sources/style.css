@@ -10,7 +10,7 @@ body {
     user-select: none;
 }
 #container {
-    width: 800px;
+    width: 1000px;
     height: 600px;
     border-radius: 40px;
     background: antiquewhite;
@@ -19,6 +19,9 @@ body {
 #start_button {
     width: 150px;
     height: 150px;
+    left: 425px;
+    top: 300px;
+    cursor: pointer;
     background: #82B366;
     border-radius: 150px;
     position: absolute;
@@ -26,9 +29,46 @@ body {
 #displayScore {
     width: 500px;
     height: 40px;
+    left: 250px;
+    top: 20px;
     background: darkgrey;
     border-radius: 40px;
     position: relative;
+}
+#game_display {
+    width: 800px;
+    height: 110px;
+    border: 25px;
+    background: #FFCC99;
+    border-radius: 25px;
+    left: 100px;
+    top: 100px;
+    opacity: 0.2;
+    position: relative;
+}
+#line {
+    width: 720px;
+    height: 1px;
+    background: black;
+    float: left;
+    left: 37px;
+    top: 32px;
+    position: absolute
+}
+#home_button {
+    left: 406px;
+    top: 200px;
+    font-size: 30px;
+    display: none;
+    position: absolute;
+}
+div.box {
+    width: 26px;
+    height: 28px;
+    top: 64px;
+    background: white;
+    border-radius: 5px;
+    position: absolute;
 }
 div.ball {
     width: 20px;
