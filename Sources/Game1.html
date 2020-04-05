@@ -5,13 +5,6 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" tyle="text/css" href="style.css">
     <style>
-        div.text {
-            top: 2px;
-            left: 7px;
-            font-size: 20px;
-            color: red;
-            position: absolute;
-        }
         #attention_box {
             width: 350px;
             height: 120px;
@@ -73,15 +66,9 @@
             <div class="point" style="left: 630px"></div>
             <div class="point" style="width: 2px; left: 700px"></div>
         </div>
-        <div class="box">
-            <div class="text">1</div>
-        </div>
-        <div class="box" style="display: none">
-            <div class="text">1</div>
-        </div>
-        <div class="box" style="display: none">
-            <div class="text">1</div>
-        </div>
+        <div class="box"> </div>
+        <div class="box"> </div>
+        <div class="box"> </div>
     </div>
     <div id="start_button" onclick="start()" onmouseover="over()" onmouseout="out()">
         <div id="start_button_1" style="left: 15px; top: 15px; width: 120px; height: 120px; border-radius: 15px; position:relative">
@@ -96,7 +83,6 @@
 </div>
 <script>
     var attention_box = document.getElementById("attention_box");
-    var text = document.getElementsByClassName("text");
     var start_button = document.getElementById("start_button");
     var game_display = document.getElementById("game_display");
     var stage = 0;
@@ -158,7 +144,7 @@
         for (var i = 0; i < 3; i++)
             if (question[i] != -1) set_box_block(i, question[i]);
         var i = 0;
-        select_box(i);
+        select_box(i, question[i]);
         addEventListener('keydown', function(event) {
             console.log(status);
             if (status == 1 && i < 3 && question[i] != -1) {
@@ -172,10 +158,10 @@
                             else restart();
                         }
                         else new_question();
-                    } else select_box(i);
+                    } else select_box(i, question[i]);
                 } else if (event.keyCode >= 48 && event.keyCode <= 57) {
                     box[i].style.border = "3px solid red";
-                    text[i].innerHTML = event.keyCode - 48;
+                    box[i].innerHTML = event.keyCode - 48;
                     attention(question[i]);
                     if (correct == 1) {
                         correct = 0;
@@ -188,22 +174,23 @@
         })
     }
     function set_box_block(index, number) {
-        text[index].innerHTML = " ";
-        box[index].style.top = "64px"
+        box[index].innerHTML = " ";
+        box[index].style.top = "70px";
         box[index].style.border = 'none';
-        box[index].style.left = 27 + (70*number) + "px";
+        box[index].style.left = 25 + (70*number) + "px";
         box[index].style.display='block';
     }
     function set_box_none (index) {
         box[index].style.display = 'none';
         attention_box.style.display = 'none';
     }
-    function select_box(index) {
-        box[index].style.top = "60px";
+    function select_box(index, number) {
         box[index].style.border = "3px solid #FFC917";
+        box[index].style.top = "67px";
+        box[index].style.left = 25 + (70*number) - 3 + "px";
     }
     function attention(number) {
-        attention_box.innerText = "After " + (number -1) + " comes " + number;
+        attention_box.innerHTML = "After " + (number -1) + " comes " + number;
         attention_box.style.display = 'block';
         attention_box.style.display = "flex";
     }

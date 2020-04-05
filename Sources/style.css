@@ -65,8 +65,12 @@ body {
 div.box {
     width: 26px;
     height: 28px;
-    top: 64px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
     background: white;
+    display: none;
     border-radius: 5px;
     position: absolute;
 }
