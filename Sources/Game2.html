@@ -9,7 +9,7 @@
             background-color: cornflowerblue;
         }
         div.number {
-            display: none;
+            
         }
         div.box {
             width: 26px;
@@ -49,7 +49,7 @@
 <body onload="fixPosition()">
 <div id="container">
     <div id="back_button" style="left: 20px; top: 30px; font-size: 20px; position: absolute;"><a href="Main.html" draggable="false">&#60; Back</a> </div>
-    <div id="displayScore">
+    <div id="displayScore" >
         <div class="ball" style="left: 10px; top: 10px"></div>
         <div class="ball" style="left: 35px; top: 10px"></div>
         <div class="ball" style="left: 60px; top: 10px"></div>
@@ -61,19 +61,15 @@
         <div class="ball" style="left: 210px; top: 10px"></div>
     </div>
     <div style="width: 1000px; height: 1px; top: 75px; background: lightgrey; position: absolute"></div>
-    <div id="game_display">
+    <div id="game_display" style="top: 300px;">
         <div class="number" style="left: 32px; top: 68px; font-size: 23px; font-weight: bold; opacity: 1">0</div>
-        <div class="number" style="left: 102px">1</div>
-        <div class="number" style="left: 173px">2</div>
-        <div class="number" style="left: 243px">3</div>
-        <div class="number" style="left: 313px">4</div>
         <div class="number" style="left: 383px; top: 68px; font-size: 23px; font-weight: bold; opacity: 1">5</div>
-        <div class="number" style="left: 453px">6</div>
-        <div class="number" style="left: 523px">7</div>
-        <div class="number" style="left: 593px">8</div>
-        <div class="number" style="left: 663px">9</div>
         <div class="number" style="left: 725px; top: 68px; font-size: 23px; font-weight: bold; opacity: 1">10</div>
-        <div id="line">
+        <div id="grasshopper" style="left: 23px; top: 0px; width: 40px; height: 40px; border-radius: 1px; 
+        position: relative">
+            <img id= "grasshopper" src="../Picture/grasshopper1.png" width="40px" height="40px" draggable="false">
+        </div>
+        <div id = "line" style="top:52px">
             <div style="left: 708px; top: -14px; position: absolute; font-size: 22px">&#62;</div>
             <div class="point" style="width: 2px"></div>
             <div class="point" style="left: 70px"></div>
@@ -88,13 +84,35 @@
             <div class="point" style="width: 2px; left: 700px"></div>
         </div>
     </div>
-    <div id="start_button" onmouseclick="start()" onmouseover="over()" onmouseout="out()">
+    <div id="start_button"  onclick="start()" onmouseover="over()" onmouseout="out()">
         <div id="start_button_1" style="left: 15px; top: 15px; width: 120px; height: 120px; border-radius: 15px; position:relative">
             <img id = "start_img" src="../Picture/Start0.png" width="120px" height="120px" style="border-radius: 120px" draggable="false">
         </div>
-        <script src="mouse_on_startButton.js"></script>
+        <script>
+            var start_button = document.getElementById("start_button");
+            var start_button_1 = document.getElementById("start_button_1");
+            var start_img = document.getElementById("start_img");
+            function over() {
+                start_button.style.left = "320px";
+                start_button.style.top = "295px"
+                start_button.style.width = "160px";
+                start_button.style.height = "160px";
+                start_button_1.style.left= "20px";
+                start_button_1.style.top= "20px";
+                start_img.src = "../Picture/Start1.png";
+            }
+            function out() {
+                start_button.style.left= "325px";
+                start_button.style.top = "300px";
+                start_button.style.width = "150px";
+                start_button.style.height = "150px";
+                start_button_1.style.left= "15px";
+                start_button_1.style.top= "15px";
+                start_img.src = "../Picture/Start0.png";
+            }
+        </script>
     </div>
-    <div id="home_button">
+    <div id="home_button" >
         <p><a href="Main.html"> Go to lesson </a></p>
     </div>
     <div id="attention_box">check</div>
@@ -108,17 +126,20 @@
         var status = 0;
         var ball = document.getElementsByClassName("ball");
         var box = document.getElementsByClassName("box");
-
+        var grasshopper = document.getElementById("grasshopper");
         var number = document.getElementsByClassName("number");
         // To show number: number[-index-].style.display: block;
 
         var score = 0;
         var correct;
+        make_question();
         function start() {
             status = 1;
             var t = setInterval(show, 20);
             var count = 0;
+
             function show() {
+                
                 if (count == 8) {
                     clearInterval(t);
                     start_button.style.display = 'none';
@@ -130,7 +151,75 @@
                 }
             }
         }
+
+        function new_question(){
+            correct = 0;
+            stage ++;
+            make_question();
+        }
+
+        function make_question() {
+            var k = Math.floor(Math.random() * 10);
+            setgrasshopper(k);
+             
+            addEventListener('keydown' , function(event) {
+                if(event.keyCode >= 48 && event.keyCode <= 57){
+                    if(event.keyCode == k + 48) {
+                        score++;
+                        score_increase();
+                        correct = 1;
+                        if(score < 9)   new_question();
+                        else end();
+                    }
+                    
+                }
+            })
+        }
+
+        function setgrasshopper(a) {
+            var pos = 23 + a * 70;
+            grasshopper.style.left = pos + "px";
+        }
+
+
+
+        function score_increase() {
+            var count = 0;
+            var pos = 15 + ((9-score) * 25);
+            var t = setInterval(move, 1);
+            function move() {
+                if (count >= 85) {
+                    clearInterval(t);
+                }
+                else {
+                    pos += 3;
+                    count ++;
+                    ball[9-score].style.left = pos + "px";
+                }
+            }
+        }
+
+        function score_decrease() {
+            var count = 0;
+            var pos = 465 - (score * 25);
+            var t = setInterval(move, 1);
+            function move() {
+                if (count >= 85) {
+                    ball[8-score].style.background = "lawngreen";
+                    clearInterval(t);
+                }
+                else {
+                    pos -= 3;
+                    count += 1;
+                    ball[8-score].style.left = pos + "px";
+                }
+            }
+        }
+
+        function end(){
+            game_display.style.opacity = 0.2;
+            document.getElementById("home_button").style.display = 'block';
+        }
     </script>
-    <script src="change_score.js"></script>
 </body>
 </html>
