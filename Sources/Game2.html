@@ -132,7 +132,7 @@
 
         var score = 0;
         var correct;
-        //make_question();
+        make_question();
         function start() {
             status = 1;
             var t = setInterval(show, 20);
@@ -152,33 +152,32 @@
             }
         }
 
-        function make_question() {
+        function new_question(){
+            correct = 0;
+            stage ++;
+            make_question();
+        }
 
+        function make_question() {
             var k = Math.floor(Math.random() * 10);
             setgrasshopper(k);
-            correct = 0; 
+             
             addEventListener('keydown' , function(event) {
                 if(event.keyCode >= 48 && event.keyCode <= 57){
                     if(event.keyCode == k + 48) {
                         score++;
                         score_increase();
                         correct = 1;
-                        if(score < 9)   make_question();
-                        else document.getElementById("home_button").style.display = 'block';
+                        if(score < 9)   new_question();
+                        else end();
                     }
-                    else if (correct == 0){
-                        if(score > 0 )  {
-                            score--;
-                            score_decrease();
-                        }
-                        make_question();
-                    }
+                    
                 }
             })
         }
 
         function setgrasshopper(a) {
-            var pos = 23 + a * 50;
+            var pos = 23 + a * 70;
             grasshopper.style.left = pos + "px";
         }
 
@@ -201,7 +200,6 @@
         }
 
         function score_decrease() {
-            ball[8-score].style.background = 'red';
             var count = 0;
             var pos = 465 - (score * 25);
             var t = setInterval(move, 1);
@@ -216,6 +214,11 @@
                     ball[8-score].style.left = pos + "px";
                 }
             }
+        }
+
+        function end(){
+            game_display.style.opacity = 0.2;
+            document.getElementById("home_button").style.display = 'block';
         }
     </script>
 </body>
