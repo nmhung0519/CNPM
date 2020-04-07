@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da942a58-e74c-41f4-a5a5-3345e6f8a19c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Sources/test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/Game1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/Game1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sources/Game3.html" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/Game3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +29,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -48,6 +47,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -111,7 +111,12 @@
       <workItem from="1586013194751" duration="2744000" />
       <workItem from="1586058578998" duration="3592000" />
       <workItem from="1586065673188" duration="10252000" />
-      <workItem from="1586095291079" duration="4086000" />
+      <workItem from="1586095291079" duration="5794000" />
+      <workItem from="1586186890827" duration="1679000" />
+      <workItem from="1586222296531" duration="7165000" />
+      <workItem from="1586234542433" duration="27000" />
+      <workItem from="1586236769869" duration="399000" />
+      <workItem from="1586237428659" duration="8342000" />
     </task>
     <servers />
   </component>

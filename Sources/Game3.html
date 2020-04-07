@@ -98,8 +98,8 @@
                     <div class="point" style="width: 2px; left: 700px"></div>
                     <div id="highlight" style="height: 4px; top: -2px; left: 0px; background: greenyellow; display: block; position: absolute"></div>
                     <div id="dot" onmousedown="mousedown(event)" style="left: -4px; cursor: default;">
-                        <div style="top: -67px; left: -18px; position: absolute">
-                            <img id="grasshopper" src="../Picture/grasshopper1.png" draggable="false" style="margin-top: 0px;">
+                        <div style="top: -67px; margin-left: -18px; position: absolute">
+                            <img id="grasshopper" src="../Picture/grasshopper1.png" draggable="false" style="margin-top: 0px; margin-left: 0px">
                         </div>
                     </div>
                     <div id="box" class="box" style="border: 5px solid gold; top: 30px; color: red; display: none"></div>
@@ -127,6 +127,7 @@
             var OK_button = document.getElementById("OK_button");
             var ball = document.getElementsByClassName("ball");
             var highlight = document.getElementById("highlight");
+            var grasshopper_margin = 0;
             var x;
             var score = 0;
             var dot_left = -5;
@@ -137,6 +138,7 @@
             var length = 0;
             var check_correct = 1;
             var question = [4, 2, 5, 8, 3, 9, 6, 1, 7];
+            var now_number = 0;
             function start() {
                 canMove = 0;
                 var count = 0;
@@ -163,7 +165,7 @@
                     start_button.style.display = 'block';
                     for (var i = 1; i < 10; i++) number[i].style.display = 'none';
                 }
-                else if (score < 10 ){
+                else if (score < 9){
                     stage = 1;
                     index = question[0];
                     question.shift();
@@ -194,15 +196,29 @@
                     if (index < 6) {
                         var t = setInterval(jump, 5);
                         move_highlight(1);
-                        console.log(index);
                     }
                     else if (index < 10) {
                         move_highlight(1);
                         make_question();
                     }
                     else {
-                        if (check_correct == 1) score_increase();
+                        if (check_correct == 1) {
+                            score_increase();
                         setTimeout(restart, 100);
+                        }
+                        else {
+                            setTimeout(function() {
+                                game_display.style.display = 'none';
+                                dot_left = -4;
+                                dot.style.left = "-4px";
+                                length = 0;
+                                highlight.style.width = "0px";
+                                index = 1;
+                                for (var i = 1; i < 10; i++) number[i].style.display = 'none';
+                            }, 100);
+                            setTimeout(function() {game_display.style.display = 'block';}, 300);
+                            setTimeout(start, 500);
+                        }
                     }
                 }
                 else if (stage == 1) {
@@ -261,7 +277,7 @@
                     grasshopper.style.cursor = 'pointer';
                 }
                 addEventListener('keydown', function(event) {
-                    if (canPress == 1) {
+                    if (canPress == 1 && stage == 0) {
                         if (event.keyCode >= 48 && event.keyCode <= 57) {
                             if (event.keyCode == index + 48) {
                                 if (box.style.display == "block") {
@@ -271,7 +287,6 @@
                                 setTimeout(function() {guide.style.display = 'none';}, 200);
                             }
                             else {
-                                console.log(event.keyCode, index);
                                 box.innerHTML = event.keyCode - 48;
                                 check_correct = 0;
                             }
@@ -279,15 +294,11 @@
                     }
                 });
                 function correct() {
-                    showAnswer(index);
+                    number[index].style.display = 'block';
                     set_box_none();
                     setTimeout(index += 1, 999);
                     setTimeout(new_question, 1000);
                 }
-            }
-            function showAnswer(n) {
-                number[n].style.display = 'block';
-                console.log("show answer");
             }
             function mousedown(ev) {
                 x = ev.x;
@@ -297,11 +308,20 @@
                 }
                 document.addEventListener('mousemove', function (evt) {
                     if (status == 1) {
-                        dot_left =  dot_left + event.x - x;
-                        x = event.x;
-                        if (dot_left < -4) dot.style.left = "-4px";
-                        else if (dot_left > 696) dot.style.left = "696px";
-                        else dot.style.left = dot_left + "px";
+                        if (now_number == 0) {
+                            dot_left = dot_left + event.x - x;
+                            x = event.x;
+                            if (dot_left < -4) dot.style.left = "-4px";
+                            else if (dot_left > 696) dot.style.left = "696px";
+                            else dot.style.left = dot_left + "px";
+                        }
+                        else {
+                            grasshopper_margin -= event.x - x;
+                            x = event.x;
+                            if (grasshopper_margin > dot_left + 4) grasshopper.style.marginLeft = (- (dot + 4)) + 'px';
+                            else if (grasshopper_margin < (dot_left + 4 - now_number * 70)) grasshopper.style.marginLeft = (-(dot_left + 4 - now_number*70)) + 'px';
+                            else grasshopper.style.marginLeft = (- grasshopper_margin) + "px";
+                        }
                     }
                 });
             }
@@ -313,52 +333,90 @@
                 if (status == 1) {
                     status = 0;
                     document.getElementById("grasshopper").style.marginTop = '0px';
-                    document.getElementById("grasshopper").src = "../Picture/grasshopper1.png";
-                    console.log(dot_left);
-                    if (dot_left > 696) {
-                        dot_left = 696;
-                        if (stage == 1) OK_on();
-                    }
-                    else if (dot_left < -4) {
-                        dot_left = -4;
-                        if (stage == 1) OK_off();
-                    }
-                    else {
-                        var tmp = Math.round((dot_left + 4) / 70) * 70 - 4;
-                        console.log(tmp);
-                        var change;
-                        if (tmp > dot_left) {
-                            change = 1;
-                        } else change = -1;
-                        var t = setInterval(move_to_near, 10);
-                        function move_to_near() {
-                            if (dot_left == tmp) {
-                                clearInterval(t);
-                                if (stage == 0) check();
-                                else {
-                                    console.log(dot_left);
-                                    if (dot_left == - 4) OK_off();
-                                    else OK_on();
+                    if (now_number == 0) {
+                        if (dot_left > 696) {
+                            dot_left = 696;
+                            if (stage == 1) OK_on();
+                        } else if (dot_left < -4) {
+                            dot_left = -4;
+                            if (stage == 1) OK_off();
+                        } else {
+                            var tmp = Math.round((dot_left + 4) / 70) * 70 - 4;
+                            var change;
+                            if (tmp > dot_left) {
+                                change = 1;
+                            } else change = -1;
+                            var t = setInterval(move_to_near, 10);
+                            function move_to_near() {
+                                if (dot_left == tmp) {
+                                    clearInterval(t);
+                                    if (stage == 0) check();
+                                    else {
+                                        if (dot_left == -4) OK_off();
+                                        else OK_on();
+                                    }
+                                } else {
+                                    dot_left += change;
+                                    dot.style.left = dot_left + "px";
                                 }
-                            } else {
-                                dot_left += change;
-                                dot.style.left = dot_left + "px";
                             }
-                        }
-                        function check() {
-                            if (dot_left + 4 == 70 * index) {
-                                canMove = 0;
-                                dot.style.cursor = "default";
-                                setTimeout(set_box_block, 500, index);
-                                if (stage == 0) setTimeout(function() {guide.style.display = 'none'}, 300);
-                                setTimeout(canPress = 1, 1000);
+                            function check() {
+                                if (dot_left + 4 == 70 * index) {
+                                    canMove = 0;
+                                    dot.style.cursor = "default";
+                                    setTimeout(set_box_block, 500, index);
+                                    if (stage == 0) setTimeout(function () {
+                                        guide.style.display = 'none'
+                                    }, 300);
+                                    setTimeout(canPress = 1, 1000);
+                                }
                             }
                         }
                     }
-
+                    else if (now_number > 0) {
+                        if (grasshopper_margin > dot_left + 4) grasshopper_margin = dot_left + 4;
+                        else if (grasshopper_margin < (dot_left + 4 - now_number * 70)) {
+                            grasshopper_margin = dot_left + 4 - (now_number * 70);
+                            console.log(grasshopper_margin);
+                            canMove = 0;
+                            setTimeout(function() {
+                                set_box_block(now_number);
+                                canMove = 0;
+                                give_guide("Write the number");
+                            }, 100);
+                            setTimeout(function() {canPress = 1;}, 200);
+                        }
+                        else {
+                            var tmp =  (Math.round(grasshopper_margin / 70)) * 70;
+                            var change;
+                            if (tmp > grasshopper_margin) change = 1;
+                            else change = -1;
+                            var t = setInterval(move_to_near, 10);
+                            function move_to_near() {
+                                if (tmp == grasshopper_margin) {
+                                    clearInterval(t);
+                                    if (dot_left + 4 == tmp + now_number * 70) {
+                                        canMove = 0;
+                                        setTimeout(function () {
+                                            set_box_block(now_number);
+                                        }, 100);
+                                        setTimeout(function () {
+                                            canPress = 1;
+                                            give_guide("Write the number");
+                                        }, 200);
+                                    }
+                                }
+                                else {
+                                    grasshopper_margin += change;
+                                    grasshopper.style.marginLeft = (- grasshopper_margin) + "px";
+                                }
+                            }
+                        }
+                    }
                 }
             });
             function check_answer() {
+                OK_off();
                 if (dot_left != -4) {
                     if (dot_left + 4 == index * 70) {
                         canMove = 0;
@@ -373,8 +431,73 @@
                         }, index * 350 + 1000);
                         setTimeout(restart, index * 350 + 1000);
                     }
+                    else try_again();
                 }
             }
+            function try_again() {
+                grasshopper.src = '../Picture/grasshopper2.png';
+                dot.style.background = 'red';
+                guide.style.display = 'none';
+                dot.style.cursor = 'pointer';
+                setTimeout(function () {
+                    var t = setInterval(function() {
+                        if (grasshopper_margin >= (dot_left + 4)) {
+                            clearInterval(t);
+                            setTimeout(function() {grasshopper.src = '../Picture/grasshopper1.png'}, 100);
+                            setTimeout(next_num, 200);
+                        }
+                        else {
+                            grasshopper_margin += 5;
+                            grasshopper.style.marginLeft = - grasshopper_margin + "px";
+                        }
+                    }, 5);
+                }, 200);
+            }
+            function next_num() {
+                if (now_number < index) {
+                    now_number += 1;
+                    move_highlight(1);
+                    setTimeout(function () {
+                        canMove = 1;
+                        give_guide("Move the grasshopper 1 step forward");
+                    }, 400);
+                }
+                else setTimeout(function(){
+                    now_number = 0;
+                    game_display.style.display = 'none';
+                    for (var i = 1; i < 10; i++) number[i].style.display = 'none';
+                    OK_button.style.display = 'none';
+                    grasshopper_margin = 0;
+                    grasshopper.style.marginLeft = "0px";
+                    length = 0 ;
+                    highlight.style.width = "0px";
+                    dot_left = -4;
+                    dot.style.left = "-4px";
+                    dot.style.background = 'black';
+                    setTimeout(function() {
+                        game_display.style.display = 'block';
+                        OK_button.style.display = 'block';
+                        canMove = 1;
+                        setTimeout(give_guide, 200, "Move the grasshopper to point " + index);
+                    }, 700);
+                }, 200);
+            }
+            addEventListener('keydown', function(event) {
+                if (canPress == 1 && stage == 1) {
+                    console.log(event.keyCode, now_number);
+                    if (event.keyCode >= 48 && event.keyCode <= 57) {
+                        if (event.keyCode == now_number + 48) {
+                            number[now_number].style.display = 'block';
+                            canPress = 0;
+                            setTimeout(set_box_none, 100);
+                            setTimeout(function () {
+                                guide.style.display = 'none';
+                            }, 200);
+                            setTimeout(next_num, 300);
+                        } else box.innerHTML = event.keyCode - 48;
+                    }
+                }
+            });
             function set_box_block(number) {
                 box.style.left = number * 70 - 15 + "px";
                 box.style.display = 'block';
