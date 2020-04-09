@@ -62,6 +62,14 @@ body {
     display: none;
     position: absolute;
 }
+#highlight {
+    height: 4px;
+    top: -2px;
+    left: 0px;
+    background: greenyellow;
+    display: block;
+    position: absolute
+}
 div.box {
     width: 26px;
     height: 28px;
@@ -91,5 +99,14 @@ div.point {
 div.number {
     top: 70px;
     font-size: 20px;
+    position: absolute;
+}
+#dot {
+    width: 10px;
+    height: 10px;
+    top: -5px;
+    left: -4px;
+    border-radius: 6px;
+    background: black;
     position: absolute;
 }
