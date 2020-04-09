@@ -1,55 +1,62 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Game 2</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" tyle="text/css" href="style.css">
     <style>
-        body {
-            background-color: cornflowerblue;
-        }
-        div.number {
-            
-        }
-        div.box {
-            width: 26px;
-            height: 28px;
-            top: 64px;
-            background: white;
-            border-radius: 5px;
-            position: absolute;
-        }
-        div.text {
-            top: 2px;
-            left: 7px;
-            font-size: 20px;
-            color: red;
-            position: absolute;
-        }
-        #attention_box {
-            width: 350px;
-            height: 120px;
-            top: 350px;
-            left: 100px;
-            display: none;
-            text-align: center;
-            background: palegoldenrod;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            border: 5px solid indianred;
-            -moz-border-radius: 350px / 120px;
-            -webkit-border-radius: 350px / 120px;
-            border-radius: 350px / 120px;
-            position: absolute;
-        }
+      body  {
+        background-color: cornflowerblue;
+      }
+
+      div.number  {
+        display: none;
+      }
+
+      div.box  {
+        width: 26px;
+        height: 28px;
+        top: 64px;
+        background: white;
+        border-radius: 5px;
+        position: absolute;
+      }
+
+      div.text  {
+        top: 2px;
+        left: 7px;
+        font-size: 20px;
+        color: red;
+        position: absolute;
+      }
+
+      #attention_box  {
+        width: 350px;
+        height: 120px;
+        top: 350px;
+        left: 100px;
+        display: none;
+         text-align: center;
+        background: palegoldenrod;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        border: 5px solid indianred;
+        -moz-border-radius: 350px / 120px;
+        -webkit-border-radius: 350px / 120px;
+        border-radius: 350px / 120px;
+        position: absolute;
+      }
+
     </style>
     <script src="resize.js"></script>
-</head>
-<body onload="fixPosition()">
-<div id="container">
-    <div id="back_button" style="left: 20px; top: 30px; font-size: 20px; position: absolute;"><a href="Main.html" draggable="false">&#60; Back</a> </div>
-    <div id="displayScore" >
+  </head>
+  <body onload="fixPosition()">
+    <div id="container">
+      <div id="back_button" style="left: 20px; top: 30px; font-size: 20px; position: absolute;">
+        <a href="Main.html" draggable="false">&#60; Back</a>
+      </div>
+      <div id="displayScore">
         <div class="ball" style="left: 10px; top: 10px"></div>
         <div class="ball" style="left: 35px; top: 10px"></div>
         <div class="ball" style="left: 60px; top: 10px"></div>
@@ -59,167 +66,193 @@
         <div class="ball" style="left: 160px; top: 10px"></div>
         <div class="ball" style="left: 185px; top: 10px"></div>
         <div class="ball" style="left: 210px; top: 10px"></div>
-    </div>
-    <div style="width: 1000px; height: 1px; top: 75px; background: lightgrey; position: absolute"></div>
-    <div id="game_display" style="top: 300px;">
-        <div class="number" style="left: 32px; top: 68px; font-size: 23px; font-weight: bold; opacity: 1">0</div>
-        <div class="number" style="left: 383px; top: 68px; font-size: 23px; font-weight: bold; opacity: 1">5</div>
-        <div class="number" style="left: 725px; top: 68px; font-size: 23px; font-weight: bold; opacity: 1">10</div>
-        <div id="grasshopper" style="left: 23px; top: 0px; width: 40px; height: 40px; border-radius: 1px; 
-        position: relative">
-            <img id= "grasshopper" src="../Picture/grasshopper1.png" width="40px" height="40px" draggable="false">
+      </div>
+      <div style="width: 1000px; height: 1px; top: 75px; background: lightgrey; position: absolute"></div>
+      <div id="game_display" style="top: 300px; opacity: 0.2">
+        <div class="number" style="left: 32px; top: 68px; font-size: 23px; font-weight: bold; display: block">
+          0
         </div>
-        <div id = "line" style="top:52px">
-            <div style="left: 708px; top: -14px; position: absolute; font-size: 22px">&#62;</div>
-            <div class="point" style="width: 2px"></div>
-            <div class="point" style="left: 70px"></div>
-            <div class="point" style="left: 140px"></div>
-            <div class="point" style="left: 210px"></div>
-            <div class="point" style="left: 280px"></div>
-            <div class="point" style="width: 2px; left: 350px"></div>
-            <div class="point" style="left: 420px"></div>
-            <div class="point" style="left: 490px"></div>
-            <div class="point" style="left: 560px"></div>
-            <div class="point" style="left: 630px"></div>
-            <div class="point" style="width: 2px; left: 700px"></div>
+        <div class="number" style="left: 102px;">
+          1
         </div>
-    </div>
-    <div id="start_button"  onclick="start()" onmouseover="over()" onmouseout="out()">
+        <div class="number" style="left: 173px;">
+          2
+        </div>
+        <div class="number" style="left: 243px;">
+          3
+        </div>
+        <div class="number" style="left: 313px;">
+          4
+        </div>
+        <div class="number" style="left: 383px; top: 68px; font-size: 23px; font-weight: bold">
+          5
+        </div>
+        <div class="number" style="left: 453px">
+          6
+        </div>
+        <div class="number" style="left: 523px">
+          7
+        </div>
+        <div class="number" style="left: 593px">
+          8
+        </div>
+        <div class="number" style="left: 663px">
+          9
+        </div>
+        <div class="number" style="left: 725px; top: 68px; font-size: 23px; font-weight: bold">
+          10
+        </div>
+        <div id="line">
+          <div style="left: 708px; top: -14px; position: absolute; font-size: 22px">
+            >
+          </div>
+          <div class="point" style="width: 2px"></div>
+          <div class="point" style="left: 70px"></div>
+          <div class="point" style="left: 140px"></div>
+          <div class="point" style="left: 210px"></div>
+          <div class="point" style="left: 280px"></div>
+          <div class="point" style="width: 2px; left: 350px"></div>
+          <div class="point" style="left: 420px"></div>
+          <div class="point" style="left: 490px"></div>
+          <div class="point" style="left: 560px"></div>
+          <div class="point" style="left: 630px"></div>
+          <div class="point"></div>
+          <div id="highlight" style="height: 4px; top: -2px; left: 0px; background: greenyellow; display: block; position: absolute"></div>
+          <div id="dot" onmousedown="mousedown(event)" style="left: 630px; margin-left: -4px; cursor: default;">
+            <div style="top: -67px; margin-left: -18px; position: absolute">
+              <img id="grasshopper" src="../Picture/grasshopper1.png" draggable="false" style="margin-top: 0px; margin-left: 0px">
+            </div>
+          </div>
+          <div id="box" class="box" style="border: 5px solid gold; margin-left: -15px; top: 30px; color: red; display: none"></div>
+        </div>
+      </div>
+      <div id="start_button" onclick="start()" onmouseover="over()" onmouseout="out()">
         <div id="start_button_1" style="left: 15px; top: 15px; width: 120px; height: 120px; border-radius: 15px; position:relative">
-            <img id = "start_img" src="../Picture/Start0.png" width="120px" height="120px" style="border-radius: 120px" draggable="false">
+          <img id="start_img" src="../Picture/Start0.png" width="120px" height="120px" style="border-radius: 120px" draggable="false">
         </div>
-        <script>
-            var start_button = document.getElementById("start_button");
-            var start_button_1 = document.getElementById("start_button_1");
-            var start_img = document.getElementById("start_img");
-            function over() {
-                start_button.style.left = "320px";
-                start_button.style.top = "295px"
-                start_button.style.width = "160px";
-                start_button.style.height = "160px";
-                start_button_1.style.left= "20px";
-                start_button_1.style.top= "20px";
-                start_img.src = "../Picture/Start1.png";
-            }
-            function out() {
-                start_button.style.left= "325px";
-                start_button.style.top = "300px";
-                start_button.style.width = "150px";
-                start_button.style.height = "150px";
-                start_button_1.style.left= "15px";
-                start_button_1.style.top= "15px";
-                start_img.src = "../Picture/Start0.png";
-            }
-        </script>
+        <script src="mouse_on_startButton.js"></script>
+      </div>
     </div>
-    <div id="home_button" >
-        <p><a href="Main.html"> Go to lesson </a></p>
-    </div>
-    <div id="attention_box">check</div>
-</div>
     <script>
-        var attention_box = document.getElementById("attention_box");
-        var text = document.getElementsByClassName("text");
-        var start_button = document.getElementById("start_button");
-        var game_display = document.getElementById("game_display");
-        var stage = 0;
-        var status = 0;
-        var ball = document.getElementsByClassName("ball");
-        var box = document.getElementsByClassName("box");
-        var grasshopper = document.getElementById("grasshopper");
-        var number = document.getElementsByClassName("number");
-        // To show number: number[-index-].style.display: block;
-
-        var score = 0;
-        var correct;
-        make_question();
-        function start() {
-            status = 1;
-            var t = setInterval(show, 20);
-            var count = 0;
-
-            function show() {
-                
-                if (count == 8) {
-                    clearInterval(t);
-                    start_button.style.display = 'none';
+var start_button = document.getElementById("start_button");
+var game_display = document.getElementById("game_display");
+var dot = document.getElementById("dot");
+var number = document.getElementsByClassName("number");
+var box = document.getElementById("box");
+var ball = document.getElementsByClassName("ball");
+var score = 0;
+var index = 0;
+var canPress = 0;
+var length = 0;
+function start() {
+    var t = setInterval(show, 20);
+    var count = 0;
+    function show() {
+        if (count == 8) {
+            clearInterval(t);
+            start_button.style.display = 'none';
+            setTimeout(next_question, 200);
+        }
+        else {
+            count++;
+            game_display.style.opacity = (count * 0.1) + 0.2;
+            start_button.style.opacity = 1 - (count * 0.1);
+        }
+    }
+}
+function guide() {
+    move_highlight(1);
+    setTimeout(function () {
+        set_box_block(index + 1);
+        setTimeout(function () {
+            canPress = 1;
+            index += 1;
+        }, 100);
+    }, 450);
+}
+addEventListener('keydown', function (ev) {
+    if (canPress == 1) {
+        console.log(ev.keyCode - 48);
+        canPress = 0;
+        if (score <= 0) {
+            if (ev.keyCode >= 48 && ev.keyCode <= 57) {
+                if (ev.keyCode - 48 == index) {
+                    number[index].style.display = 'block';
+                    setTimeout(set_box_none, 100);
+                    setTimeout(function () {
+                        if (index == 9) {
+                            if (score == 0) {
+                                setTimeout(function () {
+                                    score_increase();
+                                    game_display.style.display = 'none';
+                                }, 300);
+                                setTimeout(restart, 800);
+                                }
+                            else {
+                                length = 0;
+                                highlight.style.width = "0px";
+                                for (var i = 1; i < 10; i++)
+                                    number[i].style.display = 'none';
+                                index = 0;
+                                setTimeout(guide, 300);
+                            }
+                        }
+                        else
+                            guide();
+                    }, 500);
                 }
                 else {
-                    count ++;
-                    game_display.style.opacity = (count * 0.1) + 0.2;
-                    start_button.style.opacity = 1 - (count * 0.1);
+                    canPress = 1;
+                    box.style.border = '3px solid red';
+                    box.innerHTML = ev.keyCode - 48;
+                    score = -1;
                 }
             }
         }
-
-        function new_question(){
-            correct = 0;
-            stage ++;
-            make_question();
+        else {
         }
-
-        function make_question() {
-            var k = Math.floor(Math.random() * 10);
-            setgrasshopper(k);
-             
-            addEventListener('keydown' , function(event) {
-                if(event.keyCode >= 48 && event.keyCode <= 57){
-                    if(event.keyCode == k + 48) {
-                        score++;
-                        score_increase();
-                        correct = 1;
-                        if(score < 9)   new_question();
-                        else end();
-                    }
-                    
-                }
-            })
+    }
+});
+function set_box_block(n) {
+    box.style.left = n * 70 + "px";
+    box.style.display = 'block';
+}
+function set_box_none() {
+    box.style.display = 'none';
+    box.innerHTML = "";
+    box.style.border = '3px solid gold';
+    }
+function restart() {
+    length = 0;
+    highlight.style.width = '0px';
+    set_dot(0);
+    start_button.style.opacity = 1;
+    start_button.style.display = 'block';
+    game_display.style.opacity = 0.2;
+    game_display.style.display = 'block';
+}
+function next_question() {
+    if (score == 0)
+        guide();
+    else {
+    }
+}
+function move_highlight(n) {
+    var count = 0;
+    var t = setInterval(function () {
+        if (count == 70 * n)
+            clearInterval(t);
+        else {
+            count += 1;
+            length += 1;
+            highlight.style.width = length + 'px';
         }
-
-        function setgrasshopper(a) {
-            var pos = 23 + a * 70;
-            grasshopper.style.left = pos + "px";
-        }
-
-
-
-        function score_increase() {
-            var count = 0;
-            var pos = 15 + ((9-score) * 25);
-            var t = setInterval(move, 1);
-            function move() {
-                if (count >= 85) {
-                    clearInterval(t);
-                }
-                else {
-                    pos += 3;
-                    count ++;
-                    ball[9-score].style.left = pos + "px";
-                }
-            }
-        }
-
-        function score_decrease() {
-            var count = 0;
-            var pos = 465 - (score * 25);
-            var t = setInterval(move, 1);
-            function move() {
-                if (count >= 85) {
-                    ball[8-score].style.background = "lawngreen";
-                    clearInterval(t);
-                }
-                else {
-                    pos -= 3;
-                    count += 1;
-                    ball[8-score].style.left = pos + "px";
-                }
-            }
-        }
-
-        function end(){
-            game_display.style.opacity = 0.2;
-            document.getElementById("home_button").style.display = 'block';
-        }
+    }, 5);
+}
+function set_dot(n) {
+    dot.style.left = n * 70 - 4 + "px";
+}
     </script>
-</body>
+    <script src="change_score.js"></script>
+  </body>
 </html>
