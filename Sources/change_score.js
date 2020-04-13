@@ -1,7 +1,7 @@
 function score_increase() {
     var count = 0;
     score++;
-    var pos = 15 + ((9-score) * 25);
+    var pos = ((9-score) * 25);
     var t = setInterval(move, 1);
     function move() {
         if (count >= 85) {
@@ -16,13 +16,13 @@ function score_increase() {
 }
 function score_decrease() {
     score--;
-    ball[8-score].style.background = 'red';
+    ball[8-score].src = '../Picture/ball2.png';
     var count = 0;
-    var pos = 465 - (score * 25);
+    var pos = 455 - (score * 25);
     var t = setInterval(move, 1);
     function move() {
         if (count >= 85) {
-            ball[8-score].style.background = "lawngreen";
+            setTimeout(function() {ball[8-score].src = "../Picture/ball1.png";}, 100);
             clearInterval(t);
         }
         else {

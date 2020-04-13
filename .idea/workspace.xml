@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da942a58-e74c-41f4-a5a5-3345e6f8a19c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Sources/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Picture/ball1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Picture/ball2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/Game1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/Game1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/Game2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/Game2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Sources/Game3.html" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/Game3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/Main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/change_score.js" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/change_score.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -116,7 +122,20 @@
       <workItem from="1586222296531" duration="7165000" />
       <workItem from="1586234542433" duration="27000" />
       <workItem from="1586236769869" duration="399000" />
-      <workItem from="1586237428659" duration="8342000" />
+      <workItem from="1586237428659" duration="8408000" />
+      <workItem from="1586355199915" duration="4786000" />
+      <workItem from="1586398838556" duration="1123000" />
+      <workItem from="1586439000256" duration="710000" />
+      <workItem from="1586439733297" duration="1484000" />
+      <workItem from="1586444361349" duration="2728000" />
+      <workItem from="1586489886205" duration="361000" />
+      <workItem from="1586588579612" duration="8742000" />
+      <workItem from="1586618297017" duration="1464000" />
+      <workItem from="1586656916237" duration="932000" />
+      <workItem from="1586672600635" duration="602000" />
+      <workItem from="1586701742395" duration="1116000" />
+      <workItem from="1586756097462" duration="191000" />
+      <workItem from="1586765834939" duration="1892000" />
     </task>
     <servers />
   </component>

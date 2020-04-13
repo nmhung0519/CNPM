@@ -1,258 +1,343 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Game 2</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" tyle="text/css" href="style.css">
-    <style>
-      body  {
-        background-color: cornflowerblue;
-      }
-
-      div.number  {
-        display: none;
-      }
-
-      div.box  {
-        width: 26px;
-        height: 28px;
-        top: 64px;
-        background: white;
-        border-radius: 5px;
-        position: absolute;
-      }
-
-      div.text  {
-        top: 2px;
-        left: 7px;
-        font-size: 20px;
-        color: red;
-        position: absolute;
-      }
-
-      #attention_box  {
-        width: 350px;
-        height: 120px;
-        top: 350px;
-        left: 100px;
-        display: none;
-         text-align: center;
-        background: palegoldenrod;
-        justify-content: center;
-        align-items: center;
-        font-size: 20px;
-        border: 5px solid indianred;
-        -moz-border-radius: 350px / 120px;
-        -webkit-border-radius: 350px / 120px;
-        border-radius: 350px / 120px;
-        position: absolute;
-      }
-
-    </style>
-    <script src="resize.js"></script>
-  </head>
-  <body onload="fixPosition()">
+    <head>
+        <title>Game 2</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" tyle="text/css" href="style.css">
+        <style>
+            body {
+                background-color: cornflowerblue;
+            }
+            div.number {
+                display: none;
+            }
+            div.box {
+                width: 26px;
+                height: 28px;
+                top: 35px;
+                background: white;
+                border-radius: 5px;
+                position: absolute;
+            }
+            #text {
+                top: 100px;
+                font-size: 40px;
+                text-align: center;
+                position: absolute;
+                display: none;
+                font-family: Verdana;
+                line-height: 80px;
+            }
+            #wrong_line {
+                width: 40px;
+                height: 47px;
+                top: -15px;
+                left: -23px;
+                border-bottom: 2px solid red;
+                display:none;
+                -webkit-transform:
+                        translateY(0px)
+                        translateX(0px)
+                        rotate(-45deg);
+                position: absolute;
+            }
+            #answer {
+                top: 197px;
+                left: 650px;
+                font-size: 40px;
+                font-family: Verdana;
+                position: absolute;
+            }
+            #big_box {
+                height: 50px;
+                width: 40px;
+                top: 200px;
+                left: 640px;
+                background: white;
+                border-radius: 10px;
+                border: 3px solid gold;
+                display: none;
+                position: absolute;
+            }
+        </style>
+        <script src="resize.js"></script>
+    </head>
+    <body onload="fixPosition()">
     <div id="container">
-      <div id="back_button" style="left: 20px; top: 30px; font-size: 20px; position: absolute;">
-        <a href="Main.html" draggable="false">&#60; Back</a>
-      </div>
-      <div id="displayScore">
-        <div class="ball" style="left: 10px; top: 10px"></div>
-        <div class="ball" style="left: 35px; top: 10px"></div>
-        <div class="ball" style="left: 60px; top: 10px"></div>
-        <div class="ball "style="left: 85px; top: 10px"></div>
-        <div class="ball"style="left: 110px; top: 10px"></div>
-        <div class="ball" style="left: 135px; top: 10px"></div>
-        <div class="ball" style="left: 160px; top: 10px"></div>
-        <div class="ball" style="left: 185px; top: 10px"></div>
-        <div class="ball" style="left: 210px; top: 10px"></div>
-      </div>
-      <div style="width: 1000px; height: 1px; top: 75px; background: lightgrey; position: absolute"></div>
-      <div id="game_display" style="top: 300px; opacity: 0.2">
-        <div class="number" style="left: 32px; top: 68px; font-size: 23px; font-weight: bold; display: block">
-          0
+        <div id="back_button" style="left: 20px; top: 30px; font-size: 20px; position: absolute;"><a href="Main.html" style="text-decoration: none" draggable="false">&#60; Back</a> </div>
+        <div id="displayScore" >
+            <div><img class ="ball" src="../Picture/ball1.png" /></div>
+            <div><img class ="ball" style="left: 25px" src="../Picture/ball1.png" /></div>
+            <div><img class ="ball" style="left: 50px" src="../Picture/ball1.png" /></div>
+            <div><img class ="ball" style="left: 75px" src="../Picture/ball1.png" /></div>
+            <div><img class ="ball" style="left: 100px" src="../Picture/ball1.png" /></div>
+            <div><img class ="ball" style="left: 125px" src="../Picture/ball1.png" /></div>
+            <div><img class ="ball" style="left: 150px" src="../Picture/ball1.png" /></div>
+            <div><img class ="ball" style="left: 175px" src="../Picture/ball1.png" /></div>
+            <div><img class ="ball" style="left: 200px" src="../Picture/ball1.png" /></div>
         </div>
-        <div class="number" style="left: 102px;">
-          1
-        </div>
-        <div class="number" style="left: 173px;">
-          2
-        </div>
-        <div class="number" style="left: 243px;">
-          3
-        </div>
-        <div class="number" style="left: 313px;">
-          4
-        </div>
-        <div class="number" style="left: 383px; top: 68px; font-size: 23px; font-weight: bold">
-          5
-        </div>
-        <div class="number" style="left: 453px">
-          6
-        </div>
-        <div class="number" style="left: 523px">
-          7
-        </div>
-        <div class="number" style="left: 593px">
-          8
-        </div>
-        <div class="number" style="left: 663px">
-          9
-        </div>
-        <div class="number" style="left: 725px; top: 68px; font-size: 23px; font-weight: bold">
-          10
-        </div>
-        <div id="line">
-          <div style="left: 708px; top: -14px; position: absolute; font-size: 22px">
-            >
-          </div>
-          <div class="point" style="width: 2px"></div>
-          <div class="point" style="left: 70px"></div>
-          <div class="point" style="left: 140px"></div>
-          <div class="point" style="left: 210px"></div>
-          <div class="point" style="left: 280px"></div>
-          <div class="point" style="width: 2px; left: 350px"></div>
-          <div class="point" style="left: 420px"></div>
-          <div class="point" style="left: 490px"></div>
-          <div class="point" style="left: 560px"></div>
-          <div class="point" style="left: 630px"></div>
-          <div class="point"></div>
-          <div id="highlight" style="height: 4px; top: -2px; left: 0px; background: greenyellow; display: block; position: absolute"></div>
-          <div id="dot" onmousedown="mousedown(event)" style="left: 630px; margin-left: -4px; cursor: default;">
-            <div style="top: -67px; margin-left: -18px; position: absolute">
-              <img id="grasshopper" src="../Picture/grasshopper1.png" draggable="false" style="margin-top: 0px; margin-left: 0px">
+        <span id="text">At what point on the number line is the grasshopper?</span>
+        <div id="answer"></div>
+        <div id="wrong_line"></div>
+        <div id="big_box"></div>
+        <div style="width: 1000px; height: 1px; top: 75px; background: lightgrey; position: absolute"></div>
+        <div id="game_display" style="top: 300px; opacity: 0.2">
+            <div class="number" style="left: 32px; top: 68px; font-size: 23px; font-weight: bold; display: block">0</div>
+            <div class="number" style="left: 102px;">1</div>
+            <div class="number" style="left: 173px;">2</div>
+            <div class="number" style="left: 243px;">3</div>
+            <div class="number" style="left: 313px;">4</div>
+            <div class="number" style="left: 383px; top: 68px; font-size: 23px; font-weight: bold">5</div>
+            <div class="number" style="left: 453px">6</div>
+            <div class="number" style="left: 523px">7</div>
+            <div class="number" style="left: 593px">8</div>
+            <div class="number" style="left: 663px">9</div>
+            <div class="number" style="left: 725px; top: 68px; font-size: 23px; font-weight: bold; display: block">10</div>
+            <div id="line">
+                <div style="left: 708px; top: -14px; position: absolute; font-size: 22px">></div>
+                <div class="point" style="width: 2px"></div>
+                <div class="point" style="left: 70px"></div>
+                <div class="point" style="left: 140px"></div>
+                <div class="point" style="left: 210px"></div>
+                <div class="point" style="left: 280px"></div>
+                <div class="point" style="width: 2px; left: 350px"></div>
+                <div class="point" style="left: 420px"></div>
+                <div class="point" style="left: 490px"></div>
+                <div class="point" style="left: 560px"></div>
+                <div class="point" style="left: 630px"></div>
+                <div class="point" style="width: 2px; left: 700px"></div>
+                <div id="highlight" style="height: 4px; top: -2px; left: 0px; background: greenyellow; display: block; position: absolute"></div>
+                <div id="dot" onmousedown="mousedown(event)" style="left: 630px; margin-left: -4px; cursor: default;">
+                    <div style="top: -67px; margin-left: -18px; position: absolute">
+                        <img id="grasshopper" src="../Picture/grasshopper1.png" draggable="false" style="margin-top: 0px; margin-left: 0px">
+                    </div>
+                </div>
+                <div id="box" class="box" style="border: 3px solid gold; margin-left: -15px; color: red; display: none"></div>
             </div>
-          </div>
-          <div id="box" class="box" style="border: 5px solid gold; margin-left: -15px; top: 30px; color: red; display: none"></div>
         </div>
-      </div>
-      <div id="start_button" onclick="start()" onmouseover="over()" onmouseout="out()">
-        <div id="start_button_1" style="left: 15px; top: 15px; width: 120px; height: 120px; border-radius: 15px; position:relative">
-          <img id="start_img" src="../Picture/Start0.png" width="120px" height="120px" style="border-radius: 120px" draggable="false">
+            <div id="start_button" onclick="start()" onmouseover="over()" onmouseout="out()">
+                <div id="start_button_1" style="left: 15px; top: 15px; width: 120px; height: 120px; border-radius: 15px; position:relative">
+                    <img id = "start_img" src="../Picture/Start0.png" width="120px" height="120px" style="border-radius: 120px" draggable="false">
+                </div>
+                <script src="mouse_on_startButton.js"></script>
+            </div>
+            <div id="home_button">
+                <p><a href="Main.html"> Go to Lesson </a></p>
+            </div>
         </div>
-        <script src="mouse_on_startButton.js"></script>
-      </div>
-    </div>
-    <script>
-var start_button = document.getElementById("start_button");
-var game_display = document.getElementById("game_display");
-var dot = document.getElementById("dot");
-var number = document.getElementsByClassName("number");
-var box = document.getElementById("box");
-var ball = document.getElementsByClassName("ball");
-var score = 0;
-var index = 0;
-var canPress = 0;
-var length = 0;
-function start() {
-    var t = setInterval(show, 20);
-    var count = 0;
-    function show() {
-        if (count == 8) {
-            clearInterval(t);
-            start_button.style.display = 'none';
-            setTimeout(next_question, 200);
-        }
-        else {
-            count++;
-            game_display.style.opacity = (count * 0.1) + 0.2;
-            start_button.style.opacity = 1 - (count * 0.1);
-        }
-    }
-}
-function guide() {
-    move_highlight(1);
-    setTimeout(function () {
-        set_box_block(index + 1);
-        setTimeout(function () {
-            canPress = 1;
-            index += 1;
-        }, 100);
-    }, 450);
-}
-addEventListener('keydown', function (ev) {
-    if (canPress == 1) {
-        console.log(ev.keyCode - 48);
-        canPress = 0;
-        if (score <= 0) {
-            if (ev.keyCode >= 48 && ev.keyCode <= 57) {
-                if (ev.keyCode - 48 == index) {
-                    number[index].style.display = 'block';
-                    setTimeout(set_box_none, 100);
-                    setTimeout(function () {
-                        if (index == 9) {
-                            if (score == 0) {
-                                setTimeout(function () {
-                                    score_increase();
-                                    game_display.style.display = 'none';
-                                }, 300);
-                                setTimeout(restart, 800);
-                                }
+        <script>
+            var start_button = document.getElementById("start_button");
+            var game_display = document.getElementById("game_display");
+            var dot = document.getElementById("dot");
+            var number = document.getElementsByClassName("number");
+            var box = document.getElementById("box");
+            var ball = document.getElementsByClassName("ball");
+            var answer = document.getElementById("answer");
+            var text = document.getElementById("text");
+            var big_box = document.getElementById("big_box");
+            var wrong_line = document.getElementById("wrong_line");
+            var score = 0;
+            var index = 0;
+            var canPress = 0;
+            var length = 0;
+            var question = [4, 6, 2, 8, 3, 9, 1, 5, 7];
+            function start() {
+                var t = setInterval(show, 20);
+                var count = 0;
+                function show() {
+                    if (count == 8) {
+                        clearInterval(t);
+                        start_button.style.display = 'none';
+                        setTimeout(function() {
+                            if (score == 0) next_question();
                             else {
-                                length = 0;
-                                highlight.style.width = "0px";
-                                for (var i = 1; i < 10; i++)
-                                    number[i].style.display = 'none';
-                                index = 0;
-                                setTimeout(guide, 300);
+                                text.style.display = 'block';
+                                big_box.style.display = 'block';
+                                canPress = 1;
                             }
-                        }
-                        else
-                            guide();
-                    }, 500);
-                }
-                else {
-                    canPress = 1;
-                    box.style.border = '3px solid red';
-                    box.innerHTML = ev.keyCode - 48;
-                    score = -1;
+                        }, 200);
+                    }
+                    else {
+                        count ++;
+                        game_display.style.opacity = (count * 0.1) + 0.2;
+                        start_button.style.opacity = 1 - (count * 0.1);
+                    }
                 }
             }
-        }
-        else {
-        }
-    }
-});
-function set_box_block(n) {
-    box.style.left = n * 70 + "px";
-    box.style.display = 'block';
-}
-function set_box_none() {
-    box.style.display = 'none';
-    box.innerHTML = "";
-    box.style.border = '3px solid gold';
-    }
-function restart() {
-    length = 0;
-    highlight.style.width = '0px';
-    set_dot(0);
-    start_button.style.opacity = 1;
-    start_button.style.display = 'block';
-    game_display.style.opacity = 0.2;
-    game_display.style.display = 'block';
-}
-function next_question() {
-    if (score == 0)
-        guide();
-    else {
-    }
-}
-function move_highlight(n) {
-    var count = 0;
-    var t = setInterval(function () {
-        if (count == 70 * n)
-            clearInterval(t);
-        else {
-            count += 1;
-            length += 1;
-            highlight.style.width = length + 'px';
-        }
-    }, 5);
-}
-function set_dot(n) {
-    dot.style.left = n * 70 - 4 + "px";
-}
-    </script>
-    <script src="change_score.js"></script>
-  </body>
+            function guide() {
+                move_highlight(1);
+                setTimeout(function() {
+                    set_box_block(index + 1);
+                    setTimeout(function() {
+                        canPress = 1;
+                        index += 1;
+                    }, 100);
+                }, 450);
+            }
+            addEventListener('keydown', function(ev) {
+               if (canPress == 1) {
+                   console.log(ev.keyCode - 48);
+                   canPress = 0;
+                    if (ev.keyCode >= 48 && ev.keyCode <= 57) {
+                        if (score <= 0) {
+                            if (ev.keyCode - 48 == index) {
+                                number[index].style.display = 'block';
+                                setTimeout(set_box_none, 100);
+                                setTimeout(function() {
+                                    if (index == 9) {
+                                        if (score == 0) {
+                                            setTimeout(function() {
+                                                score_increase();
+                                                game_display.style.display = 'none';
+                                            }, 300);
+                                            setTimeout(function () {
+                                                clear();
+                                                start_button.style.opacity = 1;
+                                                game_display.style.opacity = 0.2;
+                                                game_display.style.display = 'block';
+                                                start_button.style.display = 'block';
+                                                next_question();
+                                            }, 800);
+                                        }
+                                        else {
+                                            score = 0;
+                                            length = 0;
+                                            highlight.style.width = "0px";
+                                            for (var i = 1; i < 10; i++) number[i].style.display = 'none';
+                                            index = 0;
+                                            setTimeout(guide, 300);
+                                        }
+                                    }
+                                    else guide();
+                                }, 500);
+                            }
+                            else {
+                                box.style.border = '3px solid red';
+                                box.innerHTML = ev.keyCode - 48 + "";
+                                score = -1;
+                                try_again();
+                            }
+                        }
+                        else {
+                            answer.style.top = '197px';
+                            answer.innerHTML = ev.keyCode - 48 + "";
+                            answer.style.display = 'block';
+                            big_box.style.display = 'none';
+                            if (ev.keyCode - 48 == index) {
+                                setTimeout(function() {
+                                    text.style.display = 'none';
+                                    game_display.style.display = 'none';
+                                    answer.style.display = 'none';
+                                    if (length == 0) setTimeout(score_increase, 300);
+                                    setTimeout(function () {
+                                        if (score < 9) {
+                                            next_question();
+                                            clear();
+                                            game_display.style.display = 'block';
+                                            setTimeout(function () {
+                                                text.style.display = 'block';
+                                                big_box.style.display = 'block';
+                                                canPress = 1;
+                                            }, 100);
+                                        }
+                                        else {
+                                            game_display.style.opacity = 0.2;
+                                            document.getElementById("home_button").style.display = 'block';
+                                        }
+                                    }, 800);
+                                }, 800);
+                            }
+                            else {
+                                if (score > 1) score_decrease();
+                                answer.appendChild(wrong_line);
+                                wrong_line.style.display = 'block';
+                                try_again();
+                            }
+                        }
+                    }
+               }
+               else if (canPress == 2) {
+                   canPress = 0;
+                   if (ev.keyCode >= 48 && ev.keyCode <= 57) {
+                       if (ev.keyCode - 48 == index) {
+                           number[index].style.display = 'block';
+                           set_box_none();
+                           setTimeout(function () {
+                               answer.style.top = '157px';
+                               big_box.style.display = 'block';
+                               canPress = 1;
+                           }, 200);
+                       }
+                       else try_again();
+                   }
+               }
+            });
+            function set_box_block(n) {
+                if (n < 10) {
+                    box.style.left = n * 70 + "px";
+                    box.style.display = 'block';
+                }
+                else {
+                    box.style.display = 'block';
+                    setTimeout(function() {
+                        canPress = 1;
+                    }, 100);
+                }
+            }
+            function try_again() {
+                length = 0;
+                box.style.display = 'none';
+                highlight.style.width = '0px';
+                for (var i = 1; i < 10; i++) number[i].style.display = 'none';
+                var t = setInterval(function() {
+                    if (length == index * 70) {
+                        clearInterval(t);
+                        canPress = 2;
+                        set_box_block(index);
+                    }
+                    else {
+                        move_highlight(1);
+                        setTimeout(function () {
+                            if (length / 70 < index) number[length / 70].style.display = 'block';
+                            else set_box_block(index);
+                        }, 500);
+                    }
+                }, 1500);
+            }
+            function set_box_none() {
+                box.style.display = 'none';
+                box.innerHTML = "";
+                box.style.border = '3px solid gold';
+            }
+            function next_question() {
+                if (score == 0) guide();
+                else if (score < 9) {
+                    index = question[0];
+                    question.shift();
+                    question.push(index);
+                    set_dot(index);
+                }
+            }
+            function move_highlight(n) {
+                var count = 0;
+                var t = setInterval(function() {
+                    if (count == 70 * n) clearInterval(t);
+                    else {
+                        count += 1;
+                        length += 1;
+                        highlight.style.width = length + 'px';
+                    }
+                }, 5);
+            }
+            function set_dot(n) {
+                dot.style.left = n * 70 + "px";
+            }
+            function clear() {
+                length = 0;
+                highlight.style.width = 0;
+                for (var i = 1; i < 10; i++) number[i].style.display = 'none';
+            }
+        </script>
+        <script src="change_score.js"></script>
+    </body>
 </html>

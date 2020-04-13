@@ -14,6 +14,7 @@ body {
     height: 600px;
     border-radius: 40px;
     background: antiquewhite;
+    box-shadow: 0 0 10px 4px dimgrey;
     position: relative;
 }
 #start_button {
@@ -87,6 +88,11 @@ div.ball {
     height: 20px;
     background: lawngreen;
     border-radius: 20px;
+    position: absolute;
+}
+img.ball {
+    margin-left: 10px;
+    margin-top: 10px;
     position: absolute;
 }
 div.point {

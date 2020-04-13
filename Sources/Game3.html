@@ -8,15 +8,6 @@
             div.number {
                 display:none
             }
-            #dot {
-                width: 10px;
-                height: 10px;
-                top: -5px;
-                left: -4px;
-                border-radius: 6px;
-                background: black;
-                position: absolute;
-            }
             #OK_button {
                 height: 40px;
                 width: 90px;
@@ -56,18 +47,18 @@
     <body onload="fixPosition()">
         <div id="container" style="top: 105.333px; left: -425px;">
             <div id="back_button" draggable="false" style="left: 20px; top: 30px; font-size: 20px; position: absolute;">
-                <a href="Main.html" draggable="false">< Back</a>
+                <a href="Main.html" style="text-decoration: none" draggable="false">< Back</a>
             </div>
             <div id="displayScore">
-                <div class="ball" style="left: 10px; top: 10px"></div>
-                <div class="ball" style="left: 35px; top: 10px"></div>
-                <div class="ball" style="left: 60px; top: 10px"></div>
-                <div class="ball " style="left: 85px; top: 10px"></div>
-                <div class="ball" style="left: 110px; top: 10px"></div>
-                <div class="ball" style="left: 135px; top: 10px"></div>
-                <div class="ball" style="left: 160px; top: 10px"></div>
-                <div class="ball" style="left: 185px; top: 10px"></div>
-                <div class="ball" style="left: 210px; top: 10px"></div>
+                <div><img class ="ball" src="../Picture/ball1.png" /></div>
+                <div><img class ="ball" style="left: 25px" src="../Picture/ball1.png" /></div>
+                <div><img class ="ball" style="left: 50px" src="../Picture/ball1.png" /></div>
+                <div><img class ="ball" style="left: 75px" src="../Picture/ball1.png" /></div>
+                <div><img class ="ball" style="left: 100px" src="../Picture/ball1.png" /></div>
+                <div><img class ="ball" style="left: 125px" src="../Picture/ball1.png" /></div>
+                <div><img class ="ball" style="left: 150px" src="../Picture/ball1.png" /></div>
+                <div><img class ="ball" style="left: 175px" src="../Picture/ball1.png" /></div>
+                <div><img class ="ball" style="left: 200px" src="../Picture/ball1.png" /></div>
             </div>
             <div style="width: 1000px; height: 1px; top: 75px; background: lightgrey; position: absolute"></div>
             <div id="guide"></div>
@@ -96,7 +87,7 @@
                     <div class="point" style="left: 560px"></div>
                     <div class="point" style="left: 630px"></div>
                     <div class="point" style="width: 2px; left: 700px"></div>
-                    <div id="highlight" style="height: 4px; top: -2px; left: 0px; background: greenyellow; display: block; position: absolute"></div>
+                    <div id="highlight"></div>
                     <div id="dot" onmousedown="mousedown(event)" style="left: -4px; cursor: default;">
                         <div style="top: -67px; margin-left: -18px; position: absolute">
                             <img id="grasshopper" src="../Picture/grasshopper1.png" draggable="false" style="margin-top: 0px; margin-left: 0px">
@@ -105,7 +96,7 @@
                     <div id="box" class="box" style="border: 5px solid gold; top: 30px; color: red; display: none"></div>
                 </div>
             </div>
-            <div id="start_button" onclick="start()" onmouseover="over()" onmouseout="out()" style="left: 425px; top: 300px; width: 150px; height: 150px">
+            <div id="start_button" onclick="start()" onmouseover="over()" onmouseout="out()">
                 <div id="start_button_1" style="left: 15px; top: 15px; width: 120px; height: 120px; border-radius: 15px; position: absolute;">
                     <img id="start_img" src="../Picture/Start0.png" width="120px" height="120px" style="border-radius: 120px" draggable="false">
                 </div>
