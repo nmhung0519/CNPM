@@ -144,7 +144,12 @@ var score = 0;
 var index = 0;
 var canPress = 0;
 var length = 0;
+var correct;
+var status;
+var stage = -1;
+
 function start() {
+    status = 1;
     var t = setInterval(show, 20);
     var count = 0;
     function show() {
@@ -213,6 +218,41 @@ addEventListener('keydown', function (ev) {
         }
     }
 });
+
+function new_question(){
+    correct = 1;
+    
+    var key = Math.floor(Math.random() * 10);
+    set_dot(key);
+    make_question(key);
+}
+
+function make_question(key){
+    addEventListener('keydown' , function(ev) {
+        if(status = 1) {
+            if(ev.keyCode == key + 48) {
+                if(correct == 1) {
+                    score_increase();
+                    if(score % 3 != 0)  new_question();
+                    else restart();
+                }
+                else new_question();
+            }
+            else if(ev.keyCode >= 48 && ev.keyCode <= 57) {
+                if(correct == 1) {
+                    correct = 0;
+                    if(score > stage * 3 && score > 1) {
+                        score_decrease();
+                    }
+                    else if(score = 1)  guide();
+                }
+            }
+        }
+    })
+}
+
+
+
 function set_box_block(n) {
     box.style.left = n * 70 + "px";
     box.style.display = 'block';
@@ -223,9 +263,13 @@ function set_box_none() {
     box.style.border = '3px solid gold';
     }
 function restart() {
+    status = 0;
     length = 0;
+    stage++;
+    if(stage == 3)  end();
     highlight.style.width = '0px';
     set_dot(0);
+    new_question();
     start_button.style.opacity = 1;
     start_button.style.display = 'block';
     game_display.style.opacity = 0.2;
@@ -251,6 +295,10 @@ function move_highlight(n) {
 }
 function set_dot(n) {
     dot.style.left = n * 70 - 4 + "px";
+}
+function end(){
+    game_display.style.opacity = 0.2;
+    document.getElementById("home_button").style.display = 'block';
 }
     </script>
     <script src="change_score.js"></script>
