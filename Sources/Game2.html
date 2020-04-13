@@ -175,6 +175,13 @@ function guide() {
         }, 100);
     }, 450);
 }
+function new_question() {
+    temp = Math.floor(Math.random()*10);
+    setTimeout(function() {
+        set_dot(temp);
+        canPress = 1;
+    } , 300);
+}
 addEventListener('keydown', function (ev) {
     if (canPress == 1) {
         console.log(ev.keyCode - 48);
@@ -215,41 +222,23 @@ addEventListener('keydown', function (ev) {
             }
         }
         else {
+            if (ev.keyCode >= 48 && ev.keyCode <= 57) {
+                if(ev.keyCode == temp + 48) {
+                    if(score < 9) {
+                        score_increase();
+                        new_question();
+                    }
+                    else end();
+                }
+                else {
+
+                }
+            }
         }
     }
 });
 
-function new_question(){
-    correct = 1;
-    
-    var key = Math.floor(Math.random() * 10);
-    set_dot(key);
-    make_question(key);
-}
 
-function make_question(key){
-    addEventListener('keydown' , function(ev) {
-        if(status = 1) {
-            if(ev.keyCode == key + 48) {
-                if(correct == 1) {
-                    score_increase();
-                    if(score % 3 != 0)  new_question();
-                    else restart();
-                }
-                else new_question();
-            }
-            else if(ev.keyCode >= 48 && ev.keyCode <= 57) {
-                if(correct == 1) {
-                    correct = 0;
-                    if(score > stage * 3 && score > 1) {
-                        score_decrease();
-                    }
-                    else if(score = 1)  guide();
-                }
-            }
-        }
-    })
-}
 
 
 
@@ -265,8 +254,7 @@ function set_box_none() {
 function restart() {
     status = 0;
     length = 0;
-    stage++;
-    if(stage == 3)  end();
+    
     highlight.style.width = '0px';
     set_dot(0);
     new_question();
