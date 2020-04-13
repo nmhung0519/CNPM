@@ -1,35 +1,85 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Main</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<style>
-            #a-a{
-position: relative;
-top: -550px;
-left: 600px;
-			}
-			#b-b{
-				position: relative;
-				top: -750px;
-				left: 900px;
-			}
-			#c-c{
-				position: relative;
-				top: -940px;
-				left: 1200px;
-			}
-		</style>
-	</head>
-	<body>
-		<div>
-			<img src="../Picture/aa.png" alt="" width="1525px" height="auto">
-		</div>
-	
-        <div>
-		<a href="Game1.html"><div><img src="../Picture/a.jpg" id="a-a"> </div> </a>
-		<a href="Game2.html"><div><img src="../Picture/b.jpg" id="b-b"> </div> </a>
-		<a href="Game3.html"><div><img src="../Picture/c.jpg" id="c-c"> </div> </a>
-		</div>
-	</body>
+    <head>
+        <title>Main</title>
+        <meta charset="utf-8" />
+        <style>
+            body {
+                align-items: center;
+                font-family: Verdana;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+            #header {
+                position: absolute;
+                width: 1920px;
+                height: 138px;
+                left: 0px;
+                top: 0px;
+                background: #12FF81;
+            }
+            #menu {
+                position: absolute;
+                width: 1256px;
+                height: 136px;
+                left: 88px;
+                top: 170px;
+                background: #BAFFC3;
+                border: 1px solid #CCCCCC;
+                box-sizing: border-box;
+            }
+            #list {
+                position: absolute;
+                width: 236px;
+                height: 664px;
+                left: 0px;
+                top: 136px;
+                background: #E2FFDE;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            }
+            div.game_button {
+                position: absolute;
+                width: 268px;
+                height: 355px;
+                top: 248px;
+                border: 7px solid #B3FF8C;
+                box-sizing: border-box;
+                border-radius: 20px;
+            }
+            div.game_button:hover {
+                border: 7px solid #99FF33;
+            }
+            div.name {
+                margin-top: 380px;
+                text-align: center;
+                font-size: 25px;
+                color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header"></div>
+        <div id="menu">
+            <span style="font-size: 28px; margin-top: 40px; margin-left: 50px; position: absolute">Dragonlean.in</span>
+            <div id="list"></div>
+            <a href="Game1.html">
+                <div class="game_button" style="left: 276px; background: url(../Picture/Game1-Picture.png)">
+                    <div class="name">Let's study the order of numbers. Fill in the blanks</div>
+                </div>
+            </a>
+            <a href="Game2.html">
+                <div class="game_button" style="left: 632px; background: url(../Picture/Game2-Picture.png)">
+                    <div class="name">Introduction to numerical axis. At what point is the grasshopper?</div>
+                </div>
+            </a>
+            <a href="Game3.html">
+                <div class="game_button" style="left: 988px; background: url(../Picture/Game3-Picture.png)">
+                    <div class="name">Put a grasshopper on the point</div>
+                </div>
+            </a>
+        </div>  
+    </body>
 </html>
