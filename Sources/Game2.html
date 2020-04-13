@@ -132,6 +132,9 @@
         </div>
         <script src="mouse_on_startButton.js"></script>
       </div>
+      <div id="home_button">
+        <p><a href="Main.html"> Go to lesson </a></p>
+      </div>
     </div>
     <script>
 var start_button = document.getElementById("start_button");
@@ -140,6 +143,7 @@ var dot = document.getElementById("dot");
 var number = document.getElementsByClassName("number");
 var box = document.getElementById("box");
 var ball = document.getElementsByClassName("ball");
+
 var score = 0;
 var index = 0;
 var canPress = 0;
@@ -228,7 +232,9 @@ addEventListener('keydown', function (ev) {
                         score_increase();
                         new_question();
                     }
-                    else end();
+                    else {
+                        end();
+                    }
                 }
                 else {
 
@@ -257,6 +263,7 @@ function restart() {
     
     highlight.style.width = '0px';
     set_dot(0);
+    set_num_display();
     new_question();
     start_button.style.opacity = 1;
     start_button.style.display = 'block';
@@ -268,6 +275,12 @@ function next_question() {
         guide();
     else {
     }
+}
+function set_num_display() {
+    for(var i = 1 ; i < 10 ; i++) {
+        number[i].style.display = 'none';
+    }
+    number[10].style.display = 'block';
 }
 function move_highlight(n) {
     var count = 0;
@@ -282,7 +295,7 @@ function move_highlight(n) {
     }, 5);
 }
 function set_dot(n) {
-    dot.style.left = n * 70 - 4 + "px";
+    dot.style.left = n * 70  + "px";
 }
 function end(){
     game_display.style.opacity = 0.2;
