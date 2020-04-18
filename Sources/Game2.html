@@ -51,11 +51,22 @@
             #big_box {
                 height: 50px;
                 width: 40px;
-                top: 200px;
+                top: 195px;
                 left: 640px;
+                font-size: 40px;
+                text-align: center;
                 background: white;
                 border-radius: 10px;
                 border: 3px solid gold;
+                display: none;
+                position: absolute;
+            }
+            #dialog {
+                padding: 20px;
+                top: 470px;
+                border-radius: 10px;
+                background: ghostwhite;
+                border: 3px solid green;
                 display: none;
                 position: absolute;
             }
@@ -63,58 +74,59 @@
         <script src="resize.js"></script>
     </head>
     <body onload="fixPosition()">
-    <div id="container">
-        <div id="back_button" style="left: 20px; top: 30px; font-size: 20px; position: absolute;"><a href="Main.html" style="text-decoration: none" draggable="false">&#60; Back</a> </div>
-        <div id="displayScore" >
-            <div><img class ="ball" src="../Picture/ball1.png" /></div>
-            <div><img class ="ball" style="left: 25px" src="../Picture/ball1.png" /></div>
-            <div><img class ="ball" style="left: 50px" src="../Picture/ball1.png" /></div>
-            <div><img class ="ball" style="left: 75px" src="../Picture/ball1.png" /></div>
-            <div><img class ="ball" style="left: 100px" src="../Picture/ball1.png" /></div>
-            <div><img class ="ball" style="left: 125px" src="../Picture/ball1.png" /></div>
-            <div><img class ="ball" style="left: 150px" src="../Picture/ball1.png" /></div>
-            <div><img class ="ball" style="left: 175px" src="../Picture/ball1.png" /></div>
-            <div><img class ="ball" style="left: 200px" src="../Picture/ball1.png" /></div>
-        </div>
-        <span id="text">At what point on the number line is the grasshopper?</span>
-        <div id="answer"></div>
-        <div id="wrong_line"></div>
-        <div id="big_box"></div>
-        <div style="width: 1000px; height: 1px; top: 75px; background: lightgrey; position: absolute"></div>
-        <div id="game_display" style="top: 300px; opacity: 0.2">
-            <div class="number" style="left: 32px; top: 68px; font-size: 23px; font-weight: bold; display: block">0</div>
-            <div class="number" style="left: 102px;">1</div>
-            <div class="number" style="left: 173px;">2</div>
-            <div class="number" style="left: 243px;">3</div>
-            <div class="number" style="left: 313px;">4</div>
-            <div class="number" style="left: 383px; top: 68px; font-size: 23px; font-weight: bold">5</div>
-            <div class="number" style="left: 453px">6</div>
-            <div class="number" style="left: 523px">7</div>
-            <div class="number" style="left: 593px">8</div>
-            <div class="number" style="left: 663px">9</div>
-            <div class="number" style="left: 725px; top: 68px; font-size: 23px; font-weight: bold; display: block">10</div>
-            <div id="line">
-                <div style="left: 708px; top: -14px; position: absolute; font-size: 22px">></div>
-                <div class="point" style="width: 2px"></div>
-                <div class="point" style="left: 70px"></div>
-                <div class="point" style="left: 140px"></div>
-                <div class="point" style="left: 210px"></div>
-                <div class="point" style="left: 280px"></div>
-                <div class="point" style="width: 2px; left: 350px"></div>
-                <div class="point" style="left: 420px"></div>
-                <div class="point" style="left: 490px"></div>
-                <div class="point" style="left: 560px"></div>
-                <div class="point" style="left: 630px"></div>
-                <div class="point" style="width: 2px; left: 700px"></div>
-                <div id="highlight" style="height: 4px; top: -2px; left: 0px; background: greenyellow; display: block; position: absolute"></div>
-                <div id="dot" onmousedown="mousedown(event)" style="left: 630px; margin-left: -4px; cursor: default;">
-                    <div style="top: -67px; margin-left: -18px; position: absolute">
-                        <img id="grasshopper" src="../Picture/grasshopper1.png" draggable="false" style="margin-top: 0px; margin-left: 0px">
-                    </div>
-                </div>
-                <div id="box" class="box" style="border: 3px solid gold; margin-left: -15px; color: red; display: none"></div>
+        <div id="container">
+            <div id="back_button" style="left: 20px; top: 30px; font-size: 20px; position: absolute;"><a href="Main.html" style="text-decoration: none" draggable="false">&#60; Back</a> </div>
+            <div id="displayScore" >
+                <div><img class ="ball" src="../Picture/ball1.png" /></div>
+                <div><img class ="ball" style="left: 25px" src="../Picture/ball1.png" /></div>
+                <div><img class ="ball" style="left: 50px" src="../Picture/ball1.png" /></div>
+                <div><img class ="ball" style="left: 75px" src="../Picture/ball1.png" /></div>
+                <div><img class ="ball" style="left: 100px" src="../Picture/ball1.png" /></div>
+                <div><img class ="ball" style="left: 125px" src="../Picture/ball1.png" /></div>
+                <div><img class ="ball" style="left: 150px" src="../Picture/ball1.png" /></div>
+                <div><img class ="ball" style="left: 175px" src="../Picture/ball1.png" /></div>
+                <div><img class ="ball" style="left: 200px" src="../Picture/ball1.png" /></div>
             </div>
-        </div>
+            <span id="text">At what point on the number line is the grasshopper?</span>
+            <div id="answer"></div>
+            <div id="wrong_line"></div>
+            <div id="big_box"></div>
+            <div style="width: 1000px; height: 1px; top: 75px; background: lightgrey; position: absolute"></div>
+            <div id="game_display" style="top: 300px; opacity: 0.2">
+                <div class="number" style="left: 32px; top: 68px; font-size: 23px; font-weight: bold; display: block">0</div>
+                <div class="number" style="left: 102px;">1</div>
+                <div class="number" style="left: 173px;">2</div>
+                <div class="number" style="left: 243px;">3</div>
+                <div class="number" style="left: 313px;">4</div>
+                <div class="number" style="left: 383px; top: 68px; font-size: 23px; font-weight: bold">5</div>
+                <div class="number" style="left: 453px">6</div>
+                <div class="number" style="left: 523px">7</div>
+                <div class="number" style="left: 593px">8</div>
+                <div class="number" style="left: 663px">9</div>
+                <div class="number" style="left: 725px; top: 68px; font-size: 23px; font-weight: bold; display: block">10</div>
+                <div id="line">
+                    <div style="left: 708px; top: -14px; position: absolute; font-size: 22px">></div>
+                    <div class="point" style="width: 2px"></div>
+                    <div class="point" style="left: 70px"></div>
+                    <div class="point" style="left: 140px"></div>
+                    <div class="point" style="left: 210px"></div>
+                    <div class="point" style="left: 280px"></div>
+                    <div class="point" style="width: 2px; left: 350px"></div>
+                    <div class="point" style="left: 420px"></div>
+                    <div class="point" style="left: 490px"></div>
+                    <div class="point" style="left: 560px"></div>
+                    <div class="point" style="left: 630px"></div>
+                    <div class="point" style="width: 2px; left: 700px"></div>
+                    <div id="highlight" style="height: 4px; top: -2px; left: 0px; background: greenyellow; display: block; position: absolute"></div>
+                    <div id="dot" style="left: 630px; margin-left: -4px; cursor: default;">
+                        <div id="grasshopper" style="top: -67px; margin-left: -18px; position: absolute">
+                            <img src="../Picture/grasshopper1.png" draggable="false">
+                        </div>
+                    </div>
+                    <div id="box" class="box" style="border: 3px solid gold; margin-left: -15px; color: red; display: none"></div>
+                </div>
+            </div>
+            <div id="dialog"></div>
             <div id="start_button" onclick="start()" onmouseover="over()" onmouseout="out()">
                 <div id="start_button_1" style="left: 15px; top: 15px; width: 120px; height: 120px; border-radius: 15px; position:relative">
                     <img id = "start_img" src="../Picture/Start0.png" width="120px" height="120px" style="border-radius: 120px" draggable="false">
@@ -136,6 +148,7 @@
             var text = document.getElementById("text");
             var big_box = document.getElementById("big_box");
             var wrong_line = document.getElementById("wrong_line");
+            var dialog = document.getElementById("dialog");
             var score = 0;
             var index = 0;
             var canPress = 0;
@@ -169,44 +182,43 @@
                 setTimeout(function() {
                     set_box_block(index + 1);
                     setTimeout(function() {
-                        canPress = 1;
-                        index += 1;
+                        if (index < 2) {
+                            setTimeout(function (){
+                                set_box_none(index += 1);
+                                number[index].style.display = 'block';
+                            }, 500)
+                            setTimeout(guide, 1000);
+                        }
+                        else {
+                            if (index == 2) {
+                                dialog.innerText = "Write the number";
+                                dialog.style.marginLeft = index * 70 + 180 + 'px';
+                                dialog.style.display = 'block';
+                            }
+                            canPress = 1;
+                            index += 1;
+                        }
                     }, 100);
                 }, 450);
             }
             addEventListener('keydown', function(ev) {
-               if (canPress == 1) {
-                   console.log(ev.keyCode - 48);
-                   canPress = 0;
-                    if (ev.keyCode >= 48 && ev.keyCode <= 57) {
+                if (ev.keyCode >= 48 && ev.keyCode <= 57) {
+                    if (canPress == 1) {
+                        console.log(ev.keyCode - 48);
+                        canPress = 0;
                         if (score <= 0) {
                             if (ev.keyCode - 48 == index) {
                                 number[index].style.display = 'block';
-                                setTimeout(set_box_none, 100);
+                                setTimeout(function() {
+                                    set_box_none();
+                                    dialog.style.display = 'none';
+                                }, 100);
                                 setTimeout(function() {
                                     if (index == 9) {
-                                        if (score == 0) {
-                                            setTimeout(function() {
-                                                score_increase();
-                                                game_display.style.display = 'none';
-                                            }, 300);
-                                            setTimeout(function () {
-                                                clear();
-                                                start_button.style.opacity = 1;
-                                                game_display.style.opacity = 0.2;
-                                                game_display.style.display = 'block';
-                                                start_button.style.display = 'block';
-                                                next_question();
-                                            }, 800);
-                                        }
-                                        else {
-                                            score = 0;
-                                            length = 0;
-                                            highlight.style.width = "0px";
-                                            for (var i = 1; i < 10; i++) number[i].style.display = 'none';
-                                            index = 0;
-                                            setTimeout(guide, 300);
-                                        }
+                                        text.style.display = 'block';
+                                        big_box.innerText = "";
+                                        big_box.style.display = 'block';
+                                        canPress = 3;
                                     }
                                     else guide();
                                 }, 500);
@@ -223,6 +235,7 @@
                             answer.innerHTML = ev.keyCode - 48 + "";
                             answer.style.display = 'block';
                             big_box.style.display = 'none';
+                            dialog.style.display = 'none';
                             if (ev.keyCode - 48 == index) {
                                 setTimeout(function() {
                                     text.style.display = 'none';
@@ -255,22 +268,80 @@
                             }
                         }
                     }
-               }
-               else if (canPress == 2) {
-                   canPress = 0;
-                   if (ev.keyCode >= 48 && ev.keyCode <= 57) {
-                       if (ev.keyCode - 48 == index) {
-                           number[index].style.display = 'block';
-                           set_box_none();
-                           setTimeout(function () {
-                               answer.style.top = '157px';
-                               big_box.style.display = 'block';
-                               canPress = 1;
-                           }, 200);
-                       }
-                       else try_again();
-                   }
-               }
+                    else if (canPress == 2) {
+                        canPress = 0;
+                        if (ev.keyCode >= 48 && ev.keyCode <= 57) {
+                            if (ev.keyCode - 48 == index) {
+                                number[index].style.display = 'block';
+                                set_box_none();
+                                setTimeout(function () {
+                                    answer.style.top = '157px';
+                                    big_box.style.display = 'block';
+                                    canPress = 1;
+                                }, 200);
+                            }
+                            else try_again();
+                        }
+                    }
+                    else if (canPress == 3) {
+                        canPress = 0;
+                        if (ev.keyCode - 48 == index) {
+                            answer.innerText = index + "";
+                            answer.style.display = 'block';
+                            big_box.style.display = 'none';
+                            dialog.style.display = 'none';
+                            setTimeout(function() {
+                                if (score == 0) {
+                                    setTimeout(function () {
+                                        score_increase();
+                                        game_display.style.display = 'none';
+                                        text.style.display = 'none';
+                                        answer.style.display = 'none';
+                                    }, 300);
+                                    setTimeout(function () {
+                                        clear();
+                                        start_button.style.opacity = 1;
+                                        game_display.style.opacity = 0.2;
+                                        game_display.style.display = 'block';
+                                        start_button.style.display = 'block';
+                                        next_question();
+                                    }, 800);
+                                } else {
+                                    score = 0;
+                                    length = 0;
+                                    text.style.display = 'none';
+                                    answer.style.display = 'none';
+                                    highlight.style.width = "0px";
+                                    for (var i = 1; i < 10; i++) number[i].style.display = 'none';
+                                    index = 0;
+                                    setTimeout(guide, 300);
+                                }
+                            }, 1000);
+                        }
+                        else {
+                            score = -1;
+                            big_box.style.color = 'red';
+                            big_box.innerText = ev.keyCode - 48 + "";
+                            setTimeout(function() {
+                                var count = 0;
+                                var t = setInterval(function () {
+                                    if (count == 210) {
+                                        clearInterval(t);
+                                        canPress = 3;
+                                        dialog.innerText = "Look where on the line the grasshopper has jumped to!";
+                                        dialog.style.marginLeft = "400px";
+                                        dialog.style.display = 'block';
+                                    } else {
+                                        count++;
+                                        var tmp = count % 70;
+                                        if (tmp > 35) tmp = 70 - tmp;
+                                        grasshopper.style.marginTop = -tmp + "px";
+                                    }
+                                }, 10);
+                            }, 1000);
+                        }
+                    }
+                }
             });
             function set_box_block(n) {
                 if (n < 10) {
@@ -289,6 +360,11 @@
                 box.style.display = 'none';
                 highlight.style.width = '0px';
                 for (var i = 1; i < 10; i++) number[i].style.display = 'none';
+                setTimeout(function() {
+                    dialog.innerText = "Let's count";
+                    dialog.style.marginLeft = "110px";
+                    dialog.style.display = 'block';
+                }, 400);
                 var t = setInterval(function() {
                     if (length == index * 70) {
                         clearInterval(t);
@@ -299,7 +375,11 @@
                         move_highlight(1);
                         setTimeout(function () {
                             if (length / 70 < index) number[length / 70].style.display = 'block';
-                            else set_box_block(index);
+                            else {
+                                set_box_block(index);
+                                dialog.innerText = "Write the number";
+                                dialog.style.marginLeft = index * 70 + 110 + "px";
+                            }
                         }, 500);
                     }
                 }, 1500);
