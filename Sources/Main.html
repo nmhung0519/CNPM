@@ -16,18 +16,18 @@
             #header {
                 position: absolute;
                 width: 1920px;
-                height: 138px;
+                height: 100px;
                 left: 0px;
                 top: 0px;
-                background: #12FF81;
+                background: cornflowerblue;
             }
             #menu {
                 position: absolute;
                 width: 1256px;
-                height: 136px;
-                left: 88px;
-                top: 140px;
-                background: #BAFFC3;
+                height: 60px;
+                top: 105px;
+                background: lightgrey;
+                border-radius: 2px;
                 border: 1px solid #CCCCCC;
                 box-sizing: border-box;
             }
@@ -36,7 +36,7 @@
                 width: 236px;
                 height: 500px;
                 left: 0px;
-                top: 240px;
+                top: 40px;
                 background: #E2FFDE;
                 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             }
@@ -44,7 +44,7 @@
                 position: absolute;
                 width: 240px;
                 height: 300px;
-                top: 290px;
+                top: 90px;
                 border: 7px solid #B3FF8C;
                 box-sizing: border-box;
                 color: black;
@@ -72,21 +72,49 @@
                 color: red;
             }
             #board {
-
+                height: 700px;
+                width: 1256px;
+                top: 220px;
+                position: absolute;
             }
         </style>
     </head>
-    <body>
+    <body onload="position(); load(0)">
         <div id="header"></div>
         <div id="menu">
-            <span style="font-size: 28px; margin-top: 40px; margin-left: 50px; position: absolute">Dragonlearn.in</span>
-            <div id="list" onclick="select(event)">
-                <script>
-                    function select(ev) {
-
+            <a href="Main.html"><span style="font-size: 28px; margin-top: 10px; margin-left: 30px; color: black; position: absolute">Dragonlearn.in</span></a>
+        </div>
+        <div id="board">
+            <script>
+                function position() {
+                    if (window.innerWidth < 1256)  document.getElementById("board").style.left = "0px";
+                    else {
+                        document.getElementById("board").style.left = (window.innerWidth - 1256) / 2 + "px";
+                        document.getElementById("menu").style.left = (window.innerWidth - 1256) / 2 + "px";
                     }
-                    function load() {
-
+                }
+                window.addEventListener('resize', position);
+            </script>
+            <div id="list" onclick="select(event)">
+                <script src="module.js"></script>
+                <script>
+                    var component = new Array();
+                    var board = document.getElementById("board");
+                    component[0] = new Array(document.getElementsByClassName("game_button"));
+                    var program = document.getElementsByClassName("program");
+                    function select(ev) {
+                        for (var i = 0; i < 5; i++) if (program[i] == ev.target) {
+                            load(i);
+                            break;
+                        }
+                    }
+                    function load(index) {
+                        var child = board.children;
+                        while(child[2] != null) board.removeChild(child[2]);
+                        for (var i = 0; game[index][i] != null; i++) {
+                            board.appendChild(game[index][i]);
+                            console.log("check");
+                        }
                     }
                 </script>
                 <div class="program" style="top: 0%">Numbers</div>
@@ -95,21 +123,7 @@
                 <div class="program" style="top: 60%">Measurement</div>
                 <div class="program" style="top: 80%; background: white">Secret Lab</div>
             </div>
-            <a href="Game1.html">
-                <div class="game_button" style="left: 276px; background: url(../Picture/Game1-Picture.png)">
-                    <div class="name">Let's study the order of numbers. Fill in the blanks</div>
-                </div>
-            </a>
-            <a href="Game2.html">
-                <div class="game_button" style="left: 632px; background: url(../Picture/Game2-Picture.png)">
-                    <div class="name">Introduction to numerical axis. At what point is the grasshopper?</div>
-                </div>
-            </a>
-            <a href="Game3.html">
-                <div class="game_button" style="left: 988px; background: url(../Picture/Game3-Picture.png)">
-                    <div class="name">Put a grasshopper on the point</div>
-                </div>
-            </a>
-        </div>  
+
+        </div>
     </body>
 </html>
