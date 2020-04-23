@@ -264,6 +264,7 @@
                                 box.style.border = '3px solid red';
                                 box.innerHTML = ev.keyCode - 48 + "";
                                 score = -1;
+                                highlight_count = 0;
                                 try_again();
                             }
                         }
@@ -429,6 +430,7 @@
             function next_question() {
                 Animation.style.left = 0 + 'px';
                 highlight_count = 0;
+                highlight.style.length = 0 + 'px';
                 clear_arrow();
                 if (score == 0) guide();
                 else if (score < 9) {
@@ -444,21 +446,15 @@
                 }
             }
             function move_highlight(n) {
-                var i = 0;
-                var t = setInterval(function () { 
-                    animation[i % 6].style.display = 'none';
-                    animation[++i % 6].style.display = 'block';
-                    if(i == 5)  {
-                        arrow[highlight_count].style.display = 'block';
-                        animation[5].style.display = 'none';
-                        length += 70;
-                        highlight_count++;
-                        var foo = 70 * highlight_count + 'px';
-                        highlight.style.length = foo;
-                        Animation.style.left = foo;
-                        clearInterval(t);
+                var count = 0;
+                var t = setInterval(function() {
+                    if (count == 70 * n) clearInterval(t);
+                    else {
+                        count += 1;
+                        length += 1;
+                        highlight.style.width = length + 'px';
                     }
-                }, 100);
+                }, 5);
             }
             function set_dot(n) {
                 dot.style.left = n * 70 + "px";
