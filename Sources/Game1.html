@@ -152,12 +152,18 @@
                     set_box_none(i);
                     i++;
                     if (i == 3 || question[i] == -1) {
-                        if (correct == 1) {
-                            score_increase();
-                            if (score % 3 != 0) new_question();
+                        setTimeout(function() {
+                            game_display.style.display = 'none';
+                        }, 500);
+                        setTimeout(function() {
+                            if(correct == 1) score_increase();
+                        }, 800);
+                        setTimeout(function() {
+                            console.log(stage, score);
+                            if (score < stage * 3 + 3) new_question();
                             else restart();
-                        }
-                        else new_question();
+                            game_display.style.display = 'block';
+                        }, 1300);
                     } else select_box(i, question[i]);
                 } else if (event.keyCode >= 48 && event.keyCode <= 57) {
                     box[i].style.border = "3px solid red";
@@ -165,9 +171,7 @@
                     attention(question[i]);
                     if (correct == 1) {
                         correct = 0;
-                        if (score > stage*3) {
-                            score_decrease();
-                        }
+                        if (score > stage*3) score_decrease();
                     }
                 }
             }
