@@ -22,6 +22,9 @@
             border-radius: 350px / 120px;
             position: absolute;
         }
+        #game_display {
+            margin-top: 80px;
+        }
     </style>
     <script src="resize.js"></script>
 </head>
@@ -41,6 +44,7 @@
     </div>
     <div style="width: 1000px; height: 1px; top: 75px; background: lightgrey; position: absolute"></div>
     <div id="game_display">
+        <span style="text-align: center;margin-left: 190px; margin-top: -120px; font-size: 50px; position: absolute">Fill in the blanks</span>
         <div class="number" style="left: 32px; top: 68px; font-size: 23px; font-weight: bold; opacity: 1">0</div>
         <div class="number" style="left: 102px">1</div>
         <div class="number" style="left: 173px">2</div>
@@ -148,7 +152,7 @@
         addEventListener('keydown', function(event) {
             console.log(status);
             if (status == 1 && i < 3 && question[i] != -1) {
-                if (event.keyCode == question[i] + 48) {
+                if (event.keyCode == question[i] + 48 || event.keyCode == question[i] + 96) {
                     set_box_none(i);
                     i++;
                     if (i == 3 || question[i] == -1) {
@@ -165,9 +169,10 @@
                             game_display.style.display = 'block';
                         }, 1300);
                     } else select_box(i, question[i]);
-                } else if (event.keyCode >= 48 && event.keyCode <= 57) {
+                } else if ((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)) {
                     box[i].style.border = "3px solid red";
-                    box[i].innerHTML = event.keyCode - 48;
+                    if (event.keyCode <= 57) box[i].innerHTML = event.keyCode - 48;
+                    else box[i].innerHTML = event.keyCode - 96;
                     attention(question[i]);
                     if (correct == 1) {
                         correct = 0;

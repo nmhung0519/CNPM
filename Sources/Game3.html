@@ -93,7 +93,7 @@
                             <img id="grasshopper" src="../Picture/grasshopper1.png" draggable="false" style="margin-top: 0px; margin-left: 0px">
                         </div>
                     </div>
-                    <div id="box" class="box" style="border: 5px solid gold; top: 30px; color: red; display: none"></div>
+                    <div id="box" class="box" style="border: 3px solid gold; top: 35px; color: red; display: none"></div>
                 </div>
             </div>
             <div id="start_button" onclick="start()" onmouseover="over()" onmouseout="out()">
@@ -198,6 +198,7 @@
                         setTimeout(restart, 100);
                         }
                         else {
+                            check_correct = 1;
                             setTimeout(function() {
                                 game_display.style.display = 'none';
                                 dot_left = -4;
@@ -208,7 +209,8 @@
                                 for (var i = 1; i < 10; i++) number[i].style.display = 'none';
                             }, 100);
                             setTimeout(function() {game_display.style.display = 'block';}, 300);
-                            setTimeout(start, 500);
+                            setTimeout(function () {game_display.style.display = 'block';}, 500);
+                            setTimeout(new_question, 1500);
                         }
                     }
                 }
@@ -269,8 +271,10 @@
                 }
                 addEventListener('keydown', function(event) {
                     if (canPress == 1 && stage == 0) {
-                        if (event.keyCode >= 48 && event.keyCode <= 57) {
-                            if (event.keyCode == index + 48) {
+                        if ((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)) {
+                            var key = event.keyCode - 48;
+                            if (key >= 10) key -= 48;
+                            if (key == index) {
                                 if (box.style.display == "block") {
                                     correct();
                                     canPress = 0;
@@ -278,7 +282,8 @@
                                 setTimeout(function() {guide.style.display = 'none';}, 200);
                             }
                             else {
-                                box.innerHTML = event.keyCode - 48;
+                                box.innerHTML = key + "";
+                                box.style.border = '3px solid red';
                                 check_correct = 0;
                             }
                         }
@@ -475,9 +480,10 @@
             }
             addEventListener('keydown', function(event) {
                 if (canPress == 1 && stage == 1) {
-                    console.log(event.keyCode, now_number);
-                    if (event.keyCode >= 48 && event.keyCode <= 57) {
-                        if (event.keyCode == now_number + 48) {
+                    if ((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105)) {
+                        var key = event.keyCode - 48;
+                        if (key >= 10) key -= 48;
+                        if (key == now_number) {
                             number[now_number].style.display = 'block';
                             canPress = 0;
                             setTimeout(set_box_none, 100);
@@ -485,7 +491,10 @@
                                 guide.style.display = 'none';
                             }, 200);
                             setTimeout(next_num, 300);
-                        } else box.innerHTML = event.keyCode - 48;
+                        } else {
+                            box.innerHTML = key + "";
+                            box.style.border = '3px solid red';
+                        }
                     }
                 }
             });
@@ -496,6 +505,7 @@
             function set_box_none() {
                 canPress = 0;
                 box.innerHTML = " ";
+                box.style.border = '3px solid gold';
                 box.style.display = 'none';
             }
             function OK_on() {

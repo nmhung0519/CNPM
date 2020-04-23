@@ -182,15 +182,11 @@
             var big_box = document.getElementById("big_box");
             var wrong_line = document.getElementById("wrong_line");
             var dialog = document.getElementById("dialog");
-            var Animation = document.getElementById("Animation");
-            var animation = document.getElementsByClassName("animation");
-            var arrow = document.getElementsByClassName("arrow");
             var score = 0;
             var index = 0;
             var canPress = 0;
             var length = 0;
             var question = [4, 6, 2, 8, 3, 9, 1, 5, 7];
-            var highlight_count = 0;
             function start() {
                 var t = setInterval(show, 20);
                 var count = 0;
@@ -239,12 +235,13 @@
                 }, 450);
             }
             addEventListener('keydown', function(ev) {
-                if (ev.keyCode >= 48 && ev.keyCode <= 57) {
+                if ((ev.keyCode >= 48 && ev.keyCode <= 57) || (ev.keyCode >= 96 && ev.keyCode <= 105)) {
+                    var key = ev.keyCode - 48;
+                    if (key > 10) key -= 48;
                     if (canPress == 1) {
-                        console.log(ev.keyCode - 48);
                         canPress = 0;
                         if (score <= 0) {
-                            if (ev.keyCode - 48 == index) {
+                            if (key == index) {
                                 number[index].style.display = 'block';
                                 setTimeout(function() {
                                     set_box_none();
@@ -262,18 +259,18 @@
                             }
                             else {
                                 box.style.border = '3px solid red';
-                                box.innerHTML = ev.keyCode - 48 + "";
+                                box.innerHTML = key + "";
                                 score = -1;
-                                try_again();
+                                canPress = 1;
                             }
                         }
                         else {
                             answer.style.top = '197px';
-                            answer.innerHTML = ev.keyCode - 48 + "";
+                            answer.innerHTML = key + "";
                             answer.style.display = 'block';
                             big_box.style.display = 'none';
                             dialog.style.display = 'none';
-                            if (ev.keyCode - 48 == index) {
+                            if (key == index) {
                                 setTimeout(function() {
                                     text.style.display = 'none';
                                     game_display.style.display = 'none';
@@ -307,22 +304,20 @@
                     }
                     else if (canPress == 2) {
                         canPress = 0;
-                        if (ev.keyCode >= 48 && ev.keyCode <= 57) {
-                            if (ev.keyCode - 48 == index) {
-                                number[index].style.display = 'block';
-                                set_box_none();
-                                setTimeout(function () {
-                                    answer.style.top = '150px';
-                                    big_box.style.display = 'block';
-                                    canPress = 1;
-                                }, 200);
-                            }
-                            else try_again();
+                        if (key == index) {
+                            number[index].style.display = 'block';
+                            set_box_none();
+                            setTimeout(function () {
+                                answer.style.top = '150px';
+                                big_box.style.display = 'block';
+                                canPress = 1;
+                            }, 200);
                         }
+                        else try_again();
                     }
                     else if (canPress == 3) {
                         canPress = 0;
-                        if (ev.keyCode - 48 == index) {
+                        if (key == index) {
                             answer.innerText = index + "";
                             answer.style.display = 'block';
                             big_box.style.display = 'none';
@@ -358,7 +353,7 @@
                         else {
                             score = -1;
                             big_box.style.color = 'red';
-                            big_box.innerText = ev.keyCode - 48 + "";
+                            big_box.innerText = key + "";
                             setTimeout(function() {
                                 var count = 0;
                                 var t = setInterval(function () {
@@ -427,9 +422,6 @@
                 box.style.border = '3px solid gold';
             }
             function next_question() {
-                Animation.style.left = 0 + 'px';
-                highlight_count = 0;
-                clear_arrow();
                 if (score == 0) guide();
                 else if (score < 9) {
                     index = question[0];
@@ -438,27 +430,16 @@
                     set_dot(index);
                 }
             }
-            function clear_arrow() {
-                for(var i = 0 ; i < 9 ; i++) {
-                    arrow[i].style.display = 'none';
-                }
-            }
             function move_highlight(n) {
-                var i = 0;
-                var t = setInterval(function () { 
-                    animation[i % 6].style.display = 'none';
-                    animation[++i % 6].style.display = 'block';
-                    if(i == 5)  {
-                        arrow[highlight_count].style.display = 'block';
-                        animation[5].style.display = 'none';
-                        length += 70;
-                        highlight_count++;
-                        var foo = 70 * highlight_count + 'px';
-                        highlight.style.length = foo;
-                        Animation.style.left = foo;
-                        clearInterval(t);
+                var count = 0;
+                var t = setInterval(function() {
+                    if (count == 70 * n) clearInterval(t);
+                    else {
+                        count += 1;
+                        length += 1;
+                        highlight.style.width = length + 'px';
                     }
-                }, 100);
+                }, 5);
             }
             function set_dot(n) {
                 dot.style.left = n * 70 + "px";
