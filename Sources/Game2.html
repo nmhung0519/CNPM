@@ -85,6 +85,7 @@
                 position: absolute;
                 display: none;
             }
+
         </style>
         <script src="resize.js"></script>
     </head>
@@ -169,6 +170,7 @@
             <div id="home_button">
                 <p><a href="Main.html"> Go to Lesson </a></p>
             </div>
+
         </div>
         <script>
             var start_button = document.getElementById("start_button");
@@ -264,6 +266,9 @@
                                 box.innerHTML = key + "";
                                 score = -1;
                                 canPress = 1;
+                                dialog.innerText = "After " + (index - 1) + " comes " + index;
+                                dialog.style.marginLeft = index * 70 + 90 + 'px';
+                                dialog.style.display = 'block';
                             }
                         }
                         else {
