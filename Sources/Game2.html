@@ -186,7 +186,9 @@
             var index = 0;
             var canPress = 0;
             var length = 0;
-            var question = [4, 6, 2, 8, 3, 9, 1, 5, 7];
+            var wrong = 0;
+            var question1 = [2, 1, 5, 3, 4];
+            var question2 = [4, 6, 2, 8, 3, 9, 1, 5, 7];
             function start() {
                 var t = setInterval(show, 20);
                 var count = 0;
@@ -276,26 +278,28 @@
                                     game_display.style.display = 'none';
                                     answer.style.display = 'none';
                                     if (length == 0) setTimeout(score_increase, 300);
-                                    setTimeout(function () {
-                                        if (score < 9) {
-                                            next_question();
-                                            clear();
-                                            game_display.style.display = 'block';
-                                            setTimeout(function () {
-                                                text.style.display = 'block';
-                                                big_box.style.display = 'block';
-                                                canPress = 1;
-                                            }, 100);
-                                        }
-                                        else {
-                                            game_display.style.opacity = 0.2;
-                                            document.getElementById("home_button").style.display = 'block';
-                                        }
-                                    }, 800);
+                                    if (score == 4) restart();
+                                    else {
+                                        setTimeout(function () {
+                                            if (score < 9) {
+                                                next_question();
+                                                clear();
+                                                game_display.style.display = 'block';
+                                                setTimeout(function () {
+                                                    text.style.display = 'block';
+                                                    big_box.style.display = 'block';
+                                                    canPress = 1;
+                                                }, 100);
+                                            } else {
+                                                game_display.style.opacity = 0.2;
+                                                document.getElementById("home_button").style.display = 'block';
+                                            }
+                                        }, 800);
+                                    }
                                 }, 800);
                             }
                             else {
-                                if (score > 1) score_decrease();
+                                if (score%4 != 1) score_decrease();
                                 answer.appendChild(wrong_line);
                                 wrong_line.style.display = 'block';
                                 try_again();
@@ -313,7 +317,10 @@
                                 canPress = 1;
                             }, 200);
                         }
-                        else try_again();
+                        else {
+                            if (wrong == 0) wrong = 1;
+                            try_again();
+                        }
                     }
                     else if (canPress == 3) {
                         canPress = 0;
@@ -324,21 +331,10 @@
                             dialog.style.display = 'none';
                             setTimeout(function() {
                                 if (score == 0) {
-                                    setTimeout(function () {
-                                        score_increase();
-                                        game_display.style.display = 'none';
-                                        text.style.display = 'none';
-                                        answer.style.display = 'none';
-                                    }, 300);
-                                    setTimeout(function () {
-                                        clear();
-                                        start_button.style.opacity = 1;
-                                        game_display.style.opacity = 0.2;
-                                        game_display.style.display = 'block';
-                                        start_button.style.display = 'block';
-                                        next_question();
-                                    }, 800);
-                                } else {
+                                    setTimeout(score_increase, 300);
+                                    restart();
+                                }
+                                else {
                                     score = 0;
                                     length = 0;
                                     text.style.display = 'none';
@@ -375,6 +371,21 @@
                     }
                 }
             });
+            function restart() {
+                setTimeout(function () {
+                    game_display.style.display = 'none';
+                    text.style.display = 'none';
+                    answer.style.display = 'none';
+                }, 300);
+                setTimeout(function () {
+                    clear();
+                    start_button.style.opacity = 1;
+                    game_display.style.opacity = 0.2;
+                    game_display.style.display = 'block';
+                    start_button.style.display = 'block';
+                    next_question();
+                }, 800);
+            }
             function set_box_block(n) {
                 if (n < 10) {
                     box.style.left = n * 70 + "px";
@@ -406,11 +417,13 @@
                     else {
                         move_highlight(1);
                         setTimeout(function () {
-                            if (length / 70 < index) number[length / 70].style.display = 'block';
+                            if (length / 70 < index) {
+                                if (wrong == 1) number[length / 70].style.display = 'block';
+                            }
                             else {
-                                set_box_block(index);
-                                dialog.innerText = "Write the number";
-                                dialog.style.marginLeft = index * 70 + 110 + "px";
+                                    set_box_block(index);
+                                    dialog.innerText = "Write the number";
+                                    dialog.style.marginLeft = index * 70 + 110 + "px";
                             }
                         }, 500);
                     }
@@ -423,10 +436,16 @@
             }
             function next_question() {
                 if (score == 0) guide();
+                else if (score < 5) {
+                    index = question1[0];
+                    question1.shift();
+                    question1.push(index);
+                    set_dot(index);
+                }
                 else if (score < 9) {
-                    index = question[0];
-                    question.shift();
-                    question.push(index);
+                    index = question2[0];
+                    question2.shift();
+                    question2.push(index);
                     set_dot(index);
                 }
             }
