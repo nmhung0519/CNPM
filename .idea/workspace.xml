@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da942a58-e74c-41f4-a5a5-3345e6f8a19c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/Game1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/Game1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/Game2.html" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/Game2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/Game3.html" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/Game3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/change_score.js" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/change_score.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +32,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -138,7 +136,14 @@
       <workItem from="1587368640139" duration="11443000" />
       <workItem from="1587521507722" duration="2032000" />
       <workItem from="1587534445091" duration="921000" />
-      <workItem from="1587655299860" duration="5941000" />
+      <workItem from="1587655299860" duration="6828000" />
+      <workItem from="1587696053365" duration="68000" />
+      <workItem from="1587947082805" duration="3294000" />
+      <workItem from="1587952557989" duration="108000" />
+      <workItem from="1587956596169" duration="29000" />
+      <workItem from="1587967325105" duration="6000" />
+      <workItem from="1588554235388" duration="3925000" />
+      <workItem from="1588558336430" duration="2741000" />
     </task>
     <servers />
   </component>
@@ -159,5 +164,28 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="463" y="129" key="#Inspections" timestamp="1588557970375">
+      <screen x="0" y="0" width="1676" height="902" />
+    </state>
+    <state x="463" y="129" key="#Inspections/0.0.1676.902/1920.0.1676.902@0.0.1676.902" timestamp="1588557970375" />
+    <state x="616" y="252" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588554287085">
+      <screen x="0" y="0" width="1676" height="902" />
+    </state>
+    <state x="616" y="252" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1676.902/1920.0.1676.902@0.0.1676.902" timestamp="1588554287085" />
+    <state x="2320" y="49" key="CommitChangelistDialog2" timestamp="1587662692499">
+      <screen x="1920" y="0" width="1676" height="943" />
+    </state>
+    <state x="2320" y="49" key="CommitChangelistDialog2/0.0.1676.902/1920.0.1676.943@1920.0.1676.943" timestamp="1587662692499" />
+    <state x="618" y="225" key="FileChooserDialogImpl" timestamp="1588558201315">
+      <screen x="0" y="0" width="1676" height="902" />
+    </state>
+    <state x="618" y="225" key="FileChooserDialogImpl/0.0.1676.902/1920.0.1676.902@0.0.1676.902" timestamp="1588558201315" />
+    <state x="2538" y="235" key="FileChooserDialogImpl/0.0.1676.902/1920.0.1676.943@1920.0.1676.943" timestamp="1587696120014" />
+    <state x="2052" y="168" width="1273" height="713" key="dock-window-1" timestamp="1588557037428">
+      <screen x="1920" y="0" width="1676" height="902" />
+    </state>
+    <state x="2052" y="168" width="1273" height="713" key="dock-window-1/0.0.1676.902/1920.0.1676.902@0.0.1676.902" timestamp="1588557037428" />
   </component>
 </project>
