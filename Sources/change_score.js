@@ -1,5 +1,5 @@
 function score_increase() {
-    if (score > 9) {
+    if (score < 9) {
         var count = 0;
         score++;
         var pos = ((9 - score) * 25);
