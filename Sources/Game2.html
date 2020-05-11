@@ -347,10 +347,14 @@
                                 else {
                                     score = 0;
                                     length = 0;
+                                    highlight_count = 0;
+                                    Animation.style.left = 0 + 'px';
+                                    box.style.display = 'none';
+                                    highlight.style.width = '0px';
+                                    clear_arrow();
                                     text.style.display = 'none';
                                     answer.style.display = 'none';
                                     highlight.style.width = "0px";
-                                    
                                     for (var i = 1; i < 10; i++) number[i].style.display = 'none';
                                     index = 0;
                                     setTimeout(guide, 300);
@@ -383,6 +387,12 @@
                 }
             });
             function restart() {
+                length = 0;
+                highlight_count = 0;
+                Animation.style.left = 0 + 'px';
+                box.style.display = 'none';
+                highlight.style.width = '0px';
+                clear_arrow();
                 setTimeout(function () {
                     game_display.style.display = 'none';
                     text.style.display = 'none';
@@ -449,6 +459,12 @@
                 box.style.border = '3px solid gold';
             }
             function next_question() {
+                length = 0;
+                highlight_count = 0;
+                Animation.style.left = 0 + 'px';
+                box.style.display = 'none';
+                highlight.style.width = '0px';
+                clear_arrow();
                 if (score == 0) guide();
                 else if (score < 5) {
                     index = question1[0];

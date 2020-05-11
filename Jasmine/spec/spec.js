@@ -21,7 +21,7 @@ describe("Tăng điểm", function() {
     it("Điểm = 0", function () {
         var checker;
         check1(0, checker);
-        expect(checker).toBe(true);
+        expect(checker).toBe(undefined);
     })
     it("Điểm = 3", function () {
         var checker = true;
