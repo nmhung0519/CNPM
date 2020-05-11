@@ -184,11 +184,16 @@
             var big_box = document.getElementById("big_box");
             var wrong_line = document.getElementById("wrong_line");
             var dialog = document.getElementById("dialog");
+            var Animation = document.getElementById("Animation");
+            var animation = document.getElementsByClassName("animation");
+            var arrow = document.getElementsByClassName("arrow");
             var score = 0;
             var index = 0;
             var canPress = 0;
             var length = 0;
             var wrong = 0;
+            var count = 0;
+            var highlight_count = 0;
             var question1 = [2, 1, 5, 3, 4];
             var question2 = [4, 6, 2, 8, 3, 9, 1, 5, 7];
             function start() {
@@ -345,6 +350,7 @@
                                     text.style.display = 'none';
                                     answer.style.display = 'none';
                                     highlight.style.width = "0px";
+                                    
                                     for (var i = 1; i < 10; i++) number[i].style.display = 'none';
                                     index = 0;
                                     setTimeout(guide, 300);
@@ -405,8 +411,11 @@
             }
             function try_again() {
                 length = 0;
+                highlight_count = 0;
+                Animation.style.left = 0 + 'px';
                 box.style.display = 'none';
                 highlight.style.width = '0px';
+                clear_arrow();
                 for (var i = 1; i < 10; i++) number[i].style.display = 'none';
                 setTimeout(function() {
                     dialog.innerText = "Let's count";
@@ -455,22 +464,34 @@
                 }
             }
             function move_highlight(n) {
-                var count = 0;
+                animation[0].style.display = 'block';
+                var i = 0;
                 var t = setInterval(function() {
-                    if (count == 70 * n) clearInterval(t);
-                    else {
-                        count += 1;
-                        length += 1;
+                    animation[i].style.display = 'none';
+                    animation[++i].style.display = 'block';
+                    if(i == 5) {
+                        arrow[highlight_count++].style.display = 'block';
+                        animation[5].style.display = 'none';
+                        length = highlight_count * 70;
+                        Animation.style.left = length + 'px';
                         highlight.style.width = length + 'px';
+                        clearInterval(t);
                     }
-                }, 5);
+                } , 100);
             }
             function set_dot(n) {
                 dot.style.left = n * 70 + "px";
             }
+            function clear_arrow() {
+                count = 0;
+                for(var i = 0 ; i < 9 ; i++) {
+                    arrow[i].style.display = 'none';
+                }
+            }
             function clear() {
                 length = 0;
                 highlight.style.width = 0;
+                clear_arrow();
                 for (var i = 1; i < 10; i++) number[i].style.display = 'none';
             }
         </script>
