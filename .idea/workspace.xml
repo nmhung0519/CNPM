@@ -2,29 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da942a58-e74c-41f4-a5a5-3345e6f8a19c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cypress/integration/Game1.spec.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cypress/integration/Main.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress/integration/Game2.spec.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/change_score.js" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/change_score.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/actions.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/aliasing.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/assertions.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/connectors.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/cookies.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/cypress_api.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/files.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/local_storage.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/location.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/misc.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/navigation.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/network_requests.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/querying.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/spies_stubs_clocks.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/traversal.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/utilities.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/viewport.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/waiting.spec.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cypress/integration/examples/window.spec.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/Game1.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/Game1.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cypress/integration/Main.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/cypress/integration/Main.spec.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +145,10 @@
       <workItem from="1587967325105" duration="6000" />
       <workItem from="1588554235388" duration="3925000" />
       <workItem from="1588558336430" duration="2741000" />
-      <workItem from="1589104549328" duration="10641000" />
+      <workItem from="1589104549328" duration="10704000" />
+      <workItem from="1589182708607" duration="1548000" />
+      <workItem from="1589210240981" duration="3741000" />
+      <workItem from="1589242174615" duration="5374000" />
     </task>
     <servers />
   </component>

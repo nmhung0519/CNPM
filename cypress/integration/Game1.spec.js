@@ -14,6 +14,7 @@ context('Game 1', () => {
         cy.get('body').type('7')
         cy.wait(1500)
         cy.get('body').type('1')
+        cy.get('#attention_box').should('be.visible')
     })
     it('Next grade', function() {
         cy.get('#start_button').click()
