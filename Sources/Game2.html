@@ -475,11 +475,12 @@
                 }
             }
             function move_highlight(n) {
+                Animation.style.width = 0 + 'px';
                 Animation.style.display = 'block';
                 highlight_length = 0;
                 var t = setInterval(function() {
                     if (highlight_length == 70) {
-                        Animation.style.display = 'none'
+                        Animation.style.display = 'none';
                         arrow[highlight_count].style.display = 'block';
                         highlight_count++;
                         length = highlight_count * 70;
