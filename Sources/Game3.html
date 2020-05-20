@@ -41,6 +41,23 @@
                 display: none;
                 position: absolute;
             }
+            #Animation {
+                position: relative;
+                display: none;
+                top: -20px;
+                width: 70px; height: 20px;
+                background: url('../Picture/arrow6.png');
+            }
+            img.arrow {
+                top: -20px;
+                width: 70px;
+                height: 20px;
+                position: absolute;
+                display: none;
+            }
+            #highlight {
+                display: none;
+            }
         </style>
         <script src="resize.js"></script>
     </head>
@@ -75,6 +92,18 @@
                 <div class="number" style="left: 663px">9</div>
                 <div class="number" style="left: 725px; top: 68px; font-size: 23px; font-weight: bold">10</div>
                 <div id="line">
+                    <div id="Animation" style="top: -20px; left: 0px; width: 70px; height: 20px;  background: url('../Picture/arrow1.png')">
+                    </div>
+                    <div><img class = "arrow" img src="../Picture/arrow1.png" style="left: 0px"></div>
+                    <div><img class = "arrow" img src="../Picture/arrow1.png" style="left: 70px"></div>
+                    <div><img class = "arrow" img src="../Picture/arrow1.png" style="left: 140px"></div>
+                    <div><img class = "arrow" img src="../Picture/arrow1.png" style="left: 210px"></div>
+                    <div><img class = "arrow" img src="../Picture/arrow1.png" style="left: 280px"></div>
+                    <div><img class = "arrow" img src="../Picture/arrow1.png" style="left: 350px"></div>
+                    <div><img class = "arrow" img src="../Picture/arrow1.png" style="left: 420px"></div>
+                    <div><img class = "arrow" img src="../Picture/arrow1.png" style="left: 490px"></div>
+                    <div><img class = "arrow" img src="../Picture/arrow1.png" style="left: 560px"></div>
+
                     <div style="left: 708px; top: -14px; position: absolute; font-size: 22px">></div>
                     <div class="point" style="width: 2px"></div>
                     <div class="point" style="left: 70px"></div>
@@ -118,6 +147,8 @@
             var OK_button = document.getElementById("OK_button");
             var ball = document.getElementsByClassName("ball");
             var highlight = document.getElementById("highlight");
+            var Animation = document.getElementById("Animation");
+            var arrow = document.getElementsByClassName("arrow");
             var grasshopper_margin = 0;
             var x;
             var score = 0;
@@ -130,6 +161,8 @@
             var check_correct = 1;
             var question = [4, 2, 5, 8, 3, 9, 6, 1, 7];
             var now_number = 0;
+            var highlight_length = 0;
+            var highlight_count = 0;
             function start() {
                 canMove = 0;
                 var count = 0;
@@ -148,6 +181,11 @@
                 setTimeout(new_question, 1000);
             }
             function restart() {
+                length = 0;
+                highlight_count = 0;
+                Animation.style.left = 0 + 'px';
+                highlight.style.width = '0px';
+                clear_arrow();
                 game_display.style.opacity = 0.2;
                 if (score == 0 ) {
                     index = 1;
@@ -182,6 +220,7 @@
                 }
             }
             function new_question() {
+
                 var count = 0;
                 if (stage == 0) {
                     if (index < 6) {
@@ -204,7 +243,11 @@
                                 dot_left = -4;
                                 dot.style.left = "-4px";
                                 length = 0;
-                                highlight.style.width = "0px";
+                                highlight_count = 0;
+                                Animation.style.left = 0 + 'px';
+                                highlight.style.width = '0px';
+                                clear_arrow();
+                                
                                 index = 1;
                                 for (var i = 1; i < 10; i++) number[i].style.display = 'none';
                             }, 100);
@@ -233,15 +276,23 @@
                 }
             }
             function move_highlight(n) {
-                var count = 0;
+                Animation.style.width = 0 + 'px';
+                Animation.style.length = 20 + 10 * (n - 1) + 'px';
+                Animation.style.display = 'block';
+                highlight_length = 0;
                 var t = setInterval(function() {
-                    if (count >= n * 70) {
+                    if (highlight_length == 70 * n) {
+                        Animation.style.display = 'none';
+                        if(n == 1) arrow[highlight_count].style.display = 'block';
+                        highlight_count++;
+                        length = highlight_count * 70;
+                        Animation.style.left = length + 'px';
+                        highlight.style.width = length + 'px';
                         clearInterval(t);
                     }
                     else {
-                        length ++;
-                        highlight.style.width = length + "px";
-                        count ++;
+                        highlight_length++;
+                        Animation.style.width = highlight_length + "px";
                     }
                 }, 5);
             }
@@ -465,7 +516,10 @@
                     OK_button.style.display = 'none';
                     grasshopper_margin = 0;
                     grasshopper.style.marginLeft = "0px";
-                    length = 0 ;
+                    length = 0;
+                    highlight_count = 0;
+                    Animation.style.left = 0 + 'px';
+                    clear_arrow();
                     highlight.style.width = "0px";
                     dot_left = -4;
                     dot.style.left = "-4px";
@@ -515,6 +569,12 @@
             function OK_off() {
                 OK_button.style.opacity = 0.3;
                 OK_button.style.cursor = 'default';
+            }
+            function clear_arrow() {
+                highlight_count = 0;
+                for(var i = 0 ; i < 9 ; i++) {
+                    arrow[i].style.display = 'none';
+                }
             }
         </script>
         <script src="change_score.js"></script>
