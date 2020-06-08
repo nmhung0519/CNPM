@@ -116,3 +116,182 @@ div.number {
     background: black;
     position: absolute;
 }
+#back_button {
+    left: 20px; 
+    top: 30px; 
+    font-size: 20px; 
+    position: absolute;
+}
+#back_button a {
+    text-decoration: none
+}
+.ball_1 {
+    left: 25px;
+}
+.ball_2 {
+    left: 50px;
+}
+.ball_3 {
+    left: 75px;
+}
+.ball_4 {
+    left: 100px;
+}
+.ball_5 {
+    left: 125px;
+}
+.ball_6 {
+    left: 150px;
+}
+.ball_7 {
+    left: 175px;
+}
+.ball_8 {
+    left: 200px;
+}
+.background {
+    width: 1000px; 
+    height: 1px; 
+    top: 75px; 
+    background: lightgrey; 
+    position: absolute;
+}
+.id_number {
+    top: 68px; 
+    font-size: 23px; 
+    font-weight: bold; 
+    opacity: 1;
+    display: block;
+}
+.id_0 {
+    left: 32px; 
+}
+.id_1 {
+    left: 102px;
+}
+.id_2 {
+    left: 173px;
+}
+.id_3 {
+    left: 243px;
+}
+.id_4 {
+    left: 313px;
+}
+.id_5 {
+    left: 383px; 
+}
+.id_6 {
+    left: 453px;
+}
+.id_7 {
+    left: 523px;
+}
+.id_8 {
+    left: 593px;
+}
+.id_9 {
+    left: 663px;
+}
+.id_10 {
+    left: 725px; 
+}
+.line_background {
+    left: 708px; 
+    top: -14px; 
+    position: absolute; 
+    font-size: 22px;
+}
+.point_small {
+    width: 2px;
+}
+.point_1 {
+    left: 70px;
+}
+.point_2 {
+    left: 140px;
+}
+.point_3 {
+    left: 210px;
+}
+.point_4 {
+    left: 280px;
+}
+.point_5 {
+    left: 350px;
+}
+.point_6 {
+    left: 420px;
+}
+.point_7 {
+    left: 490px;
+}
+.point_8 {
+    left: 560px;
+}
+.point_9 {
+    left: 630px;
+}
+.point_10 {
+    left: 700px;
+}
+#start_button_1 {
+    left: 15px; 
+    top: 15px; 
+    width: 120px; 
+    height: 120px; 
+    border-radius: 15px; 
+    position:relative;
+}
+
+#start_img {
+    border-radius: 120px;
+}
+.arrow_0 {
+    left: 0px;
+}
+.arrow_1 {
+    left: 70px;
+}
+.arrow_2 {
+    left: 140px;
+}
+.arrow_3 {
+    left: 210px;
+}
+.arrow_4 {
+    left: 280px;
+}
+.arrow_5 {
+    left: 350px;
+}
+.arrow_6 {
+    left: 420px;
+}
+.arrow_7 {
+    left: 490px;
+}
+.arrow_8 {
+    left: 560px;
+}
+#Animation {
+    top: -20px; left: 0px; width: 70px; height: 20px;  background: url('../Picture/arrow1.png')
+}
+#highlight {
+    height: 4px; 
+    top: -2px; 
+    left: 0px; 
+    background: greenyellow; 
+    position: absolute;
+}
+#grasshopper {
+    top: -67px; 
+    margin-left: -18px; 
+    position: absolute;
+}
+.box_style {
+    border: 3px solid gold; 
+    margin-left: -15px; 
+    color: red; 
+    display: none;
+}
